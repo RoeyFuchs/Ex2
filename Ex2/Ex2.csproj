@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DynamicDataDisplay">
-      <HintPath>..\..\..\..\Desktop\FlightSimulator\dll\DynamicDataDisplay.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\DynamicDataDisplay.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
