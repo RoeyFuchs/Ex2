@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Ex2"
         mc:Ignorable="d"
+        xmlns:controls="clr-namespace:FlightSimulator.Views"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+       
+        <Grid.RowDefinitions>
+            
+            <RowDefinition Height="44*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="347*"/>
+            
+        </Grid.RowDefinitions>
     </Grid>
 </Window>

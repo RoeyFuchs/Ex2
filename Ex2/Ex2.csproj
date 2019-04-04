@@ -65,7 +65,9 @@
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
-    <Compile Include="Views\FlightBoard.xaml.cs" />
+    <Compile Include="Views\FlightBoard.xaml.cs">
+      <DependentUpon>FlightBoard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
