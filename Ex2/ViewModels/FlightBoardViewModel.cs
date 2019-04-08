@@ -1,11 +1,11 @@
-﻿using FlightSimulator.Model.Interface;
+﻿using Ex2.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulator.ViewModels
+namespace Ex2.ViewModels
 {
     public class FlightBoardViewModel : BaseNotify
     {

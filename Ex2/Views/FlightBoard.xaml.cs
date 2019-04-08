@@ -13,12 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using FlightSimulator.Model;
-using FlightSimulator.ViewModels;
+using Ex2.Model;
+using Ex2.ViewModels;
 using Microsoft.Research.DynamicDataDisplay;
 using Microsoft.Research.DynamicDataDisplay.DataSources;
 
-namespace FlightSimulator.Views
+namespace Ex2.Views
 {
     /// <summary>
     /// Interaction logic for MazeBoard.xaml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulator.ViewModels
+namespace Ex2.ViewModels
 {
     public abstract class BaseNotify : INotifyPropertyChanged
     {

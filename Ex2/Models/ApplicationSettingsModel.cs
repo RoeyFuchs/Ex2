@@ -1,11 +1,11 @@
-﻿using FlightSimulator.Model.Interface;
+﻿using Ex2.Model.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlightSimulator.Model
+namespace Ex2.Model
 {
     public class ApplicationSettingsModel : ISettingsModel
     {
@@ -30,14 +30,14 @@ namespace FlightSimulator.Model
         }
         public int FlightCommandPort
         {
-            get { return Properties.Settings.Default.FlightCommandPort; }
-            set { Properties.Settings.Default.FlightCommandPort = value; }
+            get { return int.Parse(Properties.Settings.Default.FlightCommandPort); }
+            set { Properties.Settings.Default.FlightCommandPort = value.ToString(); }
         }
 
         public int FlightInfoPort
         {
-            get { return Properties.Settings.Default.FlightInfoPort; }
-            set { Properties.Settings.Default.FlightInfoPort = value; }
+            get { return int.Parse(Properties.Settings.Default.FlightInfoPort); }
+            set { Properties.Settings.Default.FlightInfoPort = value.ToString(); }
         }
 
         public void SaveSettings()

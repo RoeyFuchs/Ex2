@@ -1,4 +1,4 @@
-﻿using FlightSimulator.Model.EventArgs;
+﻿using Ex2.Model.EventArgs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace FlightSimulator.Views
+namespace Ex2.Views
 {
     /// <summary>
     /// Interaction logic for Joystick.xaml

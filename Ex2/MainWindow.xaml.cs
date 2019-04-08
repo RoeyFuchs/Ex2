@@ -21,5 +21,6 @@ namespace Ex2 {
         public MainWindow() {
             InitializeComponent();
         }
+
     }
 }
