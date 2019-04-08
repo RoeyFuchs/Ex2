@@ -22,5 +22,8 @@ namespace Ex2 {
             InitializeComponent();
         }
 
+        private void ControlSide_Loaded(object sender, RoutedEventArgs e) {
+
+        }
     }
 }
