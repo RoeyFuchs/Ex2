@@ -7,7 +7,7 @@
                      xmlns:controls="clr-namespace:Ex2.Views"
 
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="600" d:DesignWidth="500" Loaded="UserControl_Loaded">
     <DockPanel>
         <TabControl DockPanel.Dock="Top" Margin="0" Height="450">
             <TabItem  Header="Menual">
@@ -26,7 +26,7 @@
 
                     <controls:Joystick Grid.Column="1" Grid.Row="1"></controls:Joystick>
                     <Slider Grid.Column="1" Grid.Row="2" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
-                    <Slider  Grid.Column="0" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="187"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-64,147,308,149" >
+                    <Slider  Grid.Column="0" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-52,144,283,152" >
                         <Slider.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -36,7 +36,7 @@
                             </TransformGroup>
                         </Slider.RenderTransform>
                     </Slider>
-                    <Label Content="throttle" HorizontalAlignment="Left" Margin="73,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Width="130">
+                    <Label Content="throttle" HorizontalAlignment="Left" Margin="-52,188,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Width="130" Grid.ColumnSpan="2">
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -46,24 +46,24 @@
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
-                    <Label Content="0" HorizontalAlignment="Left" Margin="181,55,0,0" VerticalAlignment="Top" Grid.Row="1"/>
+                    <Label Content="0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" />
                     <Label Content="rudder" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="2" />
-                    <Label Content="0" HorizontalAlignment="Right" Margin="5,6,0,0"  VerticalAlignment="Top" Grid.Row="2" Grid.Column="1"/>
+                    <Label Content="0" HorizontalAlignment="Left"   VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"/>
                     <Label Content="aileron" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
-                    <Label Content="0" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Row="0" Grid.Column="1"/>
+                    <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2"/>
 
-                    <Label Content="elevator" HorizontalAlignment="Left" Margin="73,174,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" >
+                    <Label Content="elevator" HorizontalAlignment="Left" Margin="16,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.207,2.839" Grid.Row="1" Grid.Column="2" >
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
                                 <SkewTransform/>
                                 <RotateTransform Angle="90.485"/>
-                                <TranslateTransform/>
+                                <TranslateTransform X="-23.019" Y="-98.803"/>
                             </TransformGroup>
                         </Label.RenderTransform>
                     </Label>
 
-                    <Label Content="0" HorizontalAlignment="Left" Margin="88,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" >
+                    <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" >
                         <Label.RenderTransform>
                             <TransformGroup>
                                 <ScaleTransform/>
@@ -93,8 +93,9 @@
 
                 </Grid>
             </TabItem>
-            
+
         </TabControl>
+        <Label Content="Label" Height="0" VerticalAlignment="Top"/>
 
     </DockPanel>
 
