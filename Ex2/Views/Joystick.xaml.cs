@@ -1,22 +1,11 @@
 ﻿using Ex2.Model.EventArgs;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
-namespace Ex2.Views
-{
+namespace Ex2.Views {
     /// <summary>
     /// Interaction logic for Joystick.xaml
     /// </summary>
@@ -135,7 +124,7 @@ namespace Ex2.Views
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!!
+            /// YOU MUST CHANGE THE FUNCTION!!!! - add translate value function?
             ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 
@@ -146,8 +135,11 @@ namespace Ex2.Views
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = -deltaPos.Y;
-            Elevator = deltaPos.X;
+            Aileron = TranslateValue(-deltaPos.Y);
+            Elevator = TranslateValue(deltaPos.X);
+
+            Console.WriteLine(Aileron);
+            Console.WriteLine(canvasWidth / 2);
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
@@ -172,6 +164,11 @@ namespace Ex2.Views
         {
             Aileron = Elevator = _prevAileron = _prevElevator = 0;
             Released?.Invoke(this);
+        }
+
+        //translate value to -1 to 1
+        private double TranslateValue(double x) {
+            return x / (canvasWidth/2);
         }
 
     }

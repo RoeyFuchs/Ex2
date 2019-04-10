@@ -10,23 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Ex2.ViewModels.Windows;
 
-namespace Ex2 {
+namespace Ex2.Views.Windows
+{
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for connectwin.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        public MainWindow() {
+    public partial class SettingWin : Window
+    {
+        public SettingWin()
+        {
             InitializeComponent();
-            DataContext = new OpenSetting();
-
-        }
-
-        private void ControlSide_Loaded(object sender, RoutedEventArgs e) {
-
         }
     }
 }
