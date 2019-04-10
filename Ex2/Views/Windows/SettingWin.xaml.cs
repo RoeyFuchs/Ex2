@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Ex2.Model;
+using Ex2.ViewModels.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,7 @@ namespace Ex2.Views.Windows
         public SettingWin()
         {
             InitializeComponent();
+            DataContext = new SettingsWindowViewModel(new ApplicationSettingsModel());
         }
     }
 }

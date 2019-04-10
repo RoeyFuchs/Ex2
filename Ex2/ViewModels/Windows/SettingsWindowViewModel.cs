@@ -74,6 +74,7 @@ namespace Ex2.ViewModels.Windows
         private void OnClick()
         {
             model.SaveSettings();
+            
         }
         #endregion
 
@@ -89,6 +90,7 @@ namespace Ex2.ViewModels.Windows
         private void OnCancel()
         {
             model.ReloadSettings();
+          
         }
         #endregion
         #endregion
