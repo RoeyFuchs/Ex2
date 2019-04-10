@@ -8,10 +8,10 @@
         xmlns:views="clr-namespace:Ex2.Views"
         xmlns:viewss="Ex2.Views.ControlSide"
         
-        Title="MainWindow" Height="550" Width="1000">
+        Title="סתיו ורועי משתלטים על העולם" Height="550" Width="1000">
 
     <Grid>
-        
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -22,9 +22,9 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="8*"/>
 
-            
+
         </Grid.RowDefinitions>
-        
+
         <views:FlightBoard Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></views:FlightBoard>
         <DockPanel Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2">
             <TabControl DockPanel.Dock="Top" Margin="0" Height="500">
@@ -42,9 +42,9 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <views:Joystick Grid.Column="1" Grid.Row="1" ></views:Joystick>
-                        <Slider Grid.Column="1" Grid.Row="2" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
-                        <Slider  Grid.Column="0" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-56,144,287,152" >
+                        <views:Joystick x:Name="Joystick" Grid.Column="1" Grid.Row="1" ></views:Joystick>
+                        <Slider Name="rudderSlider" Grid.Column="1" Grid.Row="2" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
+                        <Slider Name="throttleSlider" Grid.Column="0" Value="0" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-56,144,287,152" >
                             <Slider.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -64,11 +64,11 @@
                                 </TransformGroup>
                             </Label.RenderTransform>
                         </Label>
-                        <Label Content="0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                        <Label Content="{Binding ElementName=throttleSlider, Path=Value}" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" />
                         <Label Content="rudder" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="2" />
-                        <Label Content="0" HorizontalAlignment="Left"   VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"/>
+                        <Label Content="{Binding ElementName=rudderSlider, Path=Value}"  HorizontalAlignment="Left"   VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"/>
                         <Label Content="aileron" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
-                        <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2"/>
+                        <Label Content="{Binding ElementName=Joystick, Path=Aileron}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2"/>
 
                         <Label Content="elevator" HorizontalAlignment="Left" Margin="16,160,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.207,2.839" Grid.Row="1" Grid.Column="2" >
                             <Label.RenderTransform>
@@ -81,7 +81,7 @@
                             </Label.RenderTransform>
                         </Label>
 
-                        <Label Content="0" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" >
+                        <Label Content="{Binding ElementName=Joystick, Path=Elevator}" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Grid.Row="1" Grid.Column="2" >
                             <Label.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -96,18 +96,19 @@
 
                 </TabItem>
                 <TabItem  Header="Auto Pilot">
-                    <Grid ShowGridLines="True">
+                    <Grid ShowGridLines="False">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="31*" />
+                            <ColumnDefinition Width="214*"/>
+                            <ColumnDefinition Width="245*" />
                         </Grid.ColumnDefinitions>
-                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch"  />
-                        <Button Content="Ok" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75"/>
-                        <Button Content="Clear" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+                        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch"  />
+                        <Button Content="Ok" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
+                        <Button Content="Clear" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
 
                     </Grid>
                 </TabItem>
@@ -119,5 +120,5 @@
         <Button Grid.Row="0" Grid.Column="0"  Content="connect" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  />
         <Button Grid.Row="0" Grid.Column="1" Content="Setting" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
     </Grid>
-    
+
 </Window>
