@@ -138,8 +138,7 @@ namespace Ex2.Views {
             Aileron = TranslateValue(-deltaPos.Y);
             Elevator = TranslateValue(deltaPos.X);
 
-            Console.WriteLine(Aileron);
-            Console.WriteLine(canvasWidth / 2);
+
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
