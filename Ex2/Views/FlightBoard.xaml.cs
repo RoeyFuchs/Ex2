@@ -27,9 +27,13 @@ namespace Ex2.Views
     {
         ObservableDataSource<Point> planeLocations = null;
         Server serv;
+
         public FlightBoard()
         {
             InitializeComponent();
+            Server.Instance.propertyChange += delegate (Object sender, PropertyChangedEventArgs e) {
+                Vm_PropertyChanged(sender, e);
+            };
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
@@ -43,11 +47,12 @@ namespace Ex2.Views
 
         private void Vm_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if(e.PropertyName.Equals("Lat") || e.PropertyName.Equals("Lon"))
-            {
-                Point p1 = new Point(0,0);           
+            string[] args = e.PropertyName.Split(',');
+                Point p1 = new Point(double.Parse(args[0]),double.Parse(args[1]));           
                 planeLocations.AppendAsync(Dispatcher, p1);
-            }
+            Console.WriteLine(double.Parse(args[0]));
+            Console.WriteLine(double.Parse(args[1]));
+            Console.WriteLine();
         }
 
     }

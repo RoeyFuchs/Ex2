@@ -75,6 +75,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\ApplicationSettingsModel.cs" />
     <Compile Include="Models\CommandHandler.cs" />
+    <Compile Include="Models\EventArgs\InfoEventArgs.cs" />
     <Compile Include="Models\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Models\Interface\IJoystickModel.cs" />
     <Compile Include="Models\Interface\ISettingsModel.cs" />

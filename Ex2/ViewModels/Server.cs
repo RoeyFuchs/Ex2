@@ -10,13 +10,30 @@ using System.Net.Sockets;
 using Ex2.ViewModels.Windows;
 using Ex2.Model;
 using System.Threading;
+using System.ComponentModel;
+using Ex2.Models.EventArgs;
+using Ex2.ViewModels;
 
+class Server : BaseNotify {
 
-
-class Server {
     SettingsWindowViewModel set;
     TcpListener serv;
-    public Server() {
+    public event PropertyChangedEventHandler propertyChange;
+    private static Server m_Instance = null;
+
+
+    #region Singleton
+    public static Server Instance {
+        get {
+            if (m_Instance == null) {
+                m_Instance = new Server();
+            }
+            return m_Instance;
+        }
+    }
+
+    #endregion
+       private Server() {
         this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
     }
     public void Start() {
@@ -35,9 +52,9 @@ class Server {
 
             string[] words = strMsg.Split(',');
             //the same networkstream reads the message sent by the client
-            double lon = double.Parse(words[0]);
-            double lat = double.Parse(words[1]);
+            propertyChange(this, new PropertyChangedEventArgs(words[0].ToString() + "," + words[1].ToString()));
+        }
+
 
         }
     }
-}
