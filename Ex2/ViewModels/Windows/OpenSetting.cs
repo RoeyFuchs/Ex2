@@ -10,14 +10,15 @@ using Ex2.Views.Windows;
 
 namespace Ex2.ViewModels.Windows
 {
-        public class OpenSetting {
-            public OpenSetting() {
+        public class SettingAndServer {
+            public SettingAndServer() {
                 _canExecute = true;
             }
-            private ICommand _clickCommand;
-            public ICommand ClickCommand {
+            private ICommand _openSettingCommand;
+        private ICommand _connectCommand;
+            public ICommand OpenSettingCommand {
                 get {
-                    return _clickCommand ?? (_clickCommand = new CommandHandler(() => MyAction()));
+                    return _openSettingCommand ?? (_openSettingCommand = new CommandHandler(() => MyAction()));
                 }
             }
             private bool _canExecute;
@@ -25,5 +26,14 @@ namespace Ex2.ViewModels.Windows
                 Window dig = new SettingWin();
                 dig.Show();
             }
+        public ICommand ConnectCommand {
+            get {
+                return _connectCommand ?? (_connectCommand = new CommandHandler(() => StartServer()));
+            }
         }
+        public void StartServer() {
+            Server serv = new Server();
+            serv.Start();
+        }
+    }
 }

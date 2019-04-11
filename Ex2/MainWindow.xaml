@@ -117,8 +117,8 @@
             <Label Content="Label" Height="0" VerticalAlignment="Top"/>
 
         </DockPanel>
-        <Button Grid.Row="0" Grid.Column="0"  Content="connect" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  />
-        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding ClickCommand}" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+        <Button Grid.Row="0" Grid.Column="0"  Content="connect" Command="{Binding ConnectCommand}" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  />
+        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding OpenSettingCommand}" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
     </Grid>
 
 </Window>
