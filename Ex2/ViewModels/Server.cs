@@ -22,10 +22,22 @@ class Server {
     public void Start() {
         this.serv = new TcpListener(IPAddress.Parse("127.0.0.1"), this.set.FlightInfoPort);
         this.serv.Start();
-        Console.WriteLine("Server has started on 127.0.0.1:80.{0}Waiting for a connection...", Environment.NewLine);
+        Console.WriteLine("Server has started on 127.0.0.1:{0}.{1}Waiting for a connection...", this.set.FlightInfoPort, Environment.NewLine);
         TcpClient client = this.serv.AcceptTcpClient();
+        Console.WriteLine("A client connected.");
+        NetworkStream ns = client.GetStream();
+        while (client.Connected)  //while the client is connected, we look for incoming messages
+        {
+            byte[] msg = new byte[1024];     //the messages arrive as byte array
+            ns.Read(msg, 0, msg.Length);
+            string strMsg = Encoding.Default.GetString(msg);
+            strMsg = strMsg.Split('\n')[0].Trim();
 
-        Console.WriteLine("A client connected.");     
+            string[] words = strMsg.Split(',');
+            //the same networkstream reads the message sent by the client
+            double lon = double.Parse(words[0]);
+            double lat = double.Parse(words[1]);
 
+        }
     }
 }
