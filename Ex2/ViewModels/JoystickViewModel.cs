@@ -41,7 +41,7 @@ namespace Ex2.ViewModels
        
         public void NotifyPropertyChanged(string propName)
         {
-            Console.WriteLine("propName");
+            Console.WriteLine(propName);
         }
 
 

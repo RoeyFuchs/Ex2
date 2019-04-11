@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ex2.Models;
+using Ex2.ViewModels;
 using Ex2.ViewModels.Windows;
 
 namespace Ex2 {
@@ -21,7 +23,11 @@ namespace Ex2 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            DataContext = new SettingAndServer();
+            //  DataContext = new SettingAndServer();
+            //DataContext = new JoystickViewModel(new JoystickModel());
+            var model = new JoystickModel(); ;
+            DataContext = model;
+            new JoystickViewModel(model);
         }
 
         private void ControlSide_Loaded(object sender, RoutedEventArgs e) {
