@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex2.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Ex2.Views
         public ControlSide()
         {
             InitializeComponent();
-            this.DataContext = new ViewModels.JoystickViewModel();
+            this.DataContext = new ViewModels.JoystickViewModel(new JoystickModel());
         }
 
     }

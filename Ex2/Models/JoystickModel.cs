@@ -13,7 +13,7 @@ namespace Ex2.Models
     class JoystickModel : BaseNotify,IJoystickModel
     {
         public  VirtualJoystickEventArgs virtualJoystickEventArgs;
-        public event PropertyChangedEventHandler PropertyChanged;
+        public new event PropertyChangedEventHandler PropertyChanged;
         private double throttle;
         public double Throttle
         {
@@ -67,7 +67,7 @@ namespace Ex2.Models
 
             }
         }
-        public void NotifyPropertyChanged(string propName){
+        public new void NotifyPropertyChanged(string propName){
 if (this.PropertyChanged != null)
 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
 }
