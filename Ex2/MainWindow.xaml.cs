@@ -21,8 +21,7 @@ namespace Ex2 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            DataContext = new OpenSetting();
-
+            DataContext = new SettingAndServer();
         }
 
         private void ControlSide_Loaded(object sender, RoutedEventArgs e) {

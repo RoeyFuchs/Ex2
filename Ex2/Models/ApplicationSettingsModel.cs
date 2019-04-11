@@ -22,6 +22,7 @@ namespace Ex2.Model
                 return m_Instance;
             }
         }
+
         #endregion
         public string FlightServerIP
         {

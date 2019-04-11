@@ -24,7 +24,7 @@ namespace Ex2.Views.Windows
         public SettingWin()
         {
             InitializeComponent();
-            DataContext = new SettingsWindowViewModel(new ApplicationSettingsModel());
+            DataContext = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
         }
     }
 }
