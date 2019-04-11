@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -33,7 +34,8 @@ namespace Ex2.ViewModels.Windows
         }
         public void StartServer() {
             Server serv = new Server();
-            serv.Start();
+            ThreadStart ts = delegate { serv.Start(); };
+            Console.WriteLine("f$@#T$^$^TRGSDGDGDGSDGDGDSGSDd");
         }
     }
 }

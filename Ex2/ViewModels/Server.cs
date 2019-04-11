@@ -21,14 +21,11 @@ class Server {
     }
     public void Start() {
         this.serv = new TcpListener(IPAddress.Parse("127.0.0.1"), this.set.FlightInfoPort);
-        Thread th = new Thread(this.Connect());
-
-    }
-     private void Connect() {
         this.serv.Start();
         Console.WriteLine("Server has started on 127.0.0.1:80.{0}Waiting for a connection...", Environment.NewLine);
         TcpClient client = this.serv.AcceptTcpClient();
 
-        Console.WriteLine("A client connected.");
+        Console.WriteLine("A client connected.");     
+
     }
 }
