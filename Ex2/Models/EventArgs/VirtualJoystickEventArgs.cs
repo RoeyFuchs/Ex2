@@ -10,5 +10,7 @@ namespace Ex2.Model.EventArgs
     {
         public double Aileron { get; set; }
         public double Elevator { get; set; }
+        public double Throttle { get; set; }
+        public double Rudder { get; set; }
     }
 }
