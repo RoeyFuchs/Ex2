@@ -12,6 +12,10 @@ namespace Ex2.Models
 {
     class JoystickModel : BaseNotify,IJoystickModel
     {
+        public JoystickModel()
+        {
+            virtualJoystickEventArgs = new VirtualJoystickEventArgs();
+        }
         public  VirtualJoystickEventArgs virtualJoystickEventArgs;
         public new event PropertyChangedEventHandler PropertyChanged;
         private double throttle;
