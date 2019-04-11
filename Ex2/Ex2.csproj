@@ -84,7 +84,6 @@
     <Compile Include="ViewModels\Interface\IJoystickViewModel.cs" />
     <Compile Include="ViewModels\JoystickViewModel.cs" />
     <Compile Include="ViewModels\Server.cs" />
-    <Compile Include="ViewModels\Windows\Connect.cs" />
     <Compile Include="ViewModels\Windows\OpenSetting.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
     <Compile Include="Views\ControlSide.xaml.cs">
