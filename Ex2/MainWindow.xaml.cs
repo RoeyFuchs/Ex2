@@ -23,11 +23,8 @@ namespace Ex2 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-            //  DataContext = new SettingAndServer();
-            //DataContext = new JoystickViewModel(new JoystickModel());
-            var model = new JoystickModel(); ;
-            DataContext = model;
-            new JoystickViewModel(model);
+             DataContext = new SettingAndServer();
+            
         }
 
         private void ControlSide_Loaded(object sender, RoutedEventArgs e) {

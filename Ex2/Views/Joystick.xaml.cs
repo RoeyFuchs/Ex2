@@ -101,7 +101,6 @@ namespace Ex2.Views {
         public Joystick()
         {
             InitializeComponent();
-
             Knob.MouseLeftButtonDown += Knob_MouseLeftButtonDown;
             Knob.MouseLeftButtonUp += Knob_MouseLeftButtonUp;
             Knob.MouseMove += Knob_MouseMove;
