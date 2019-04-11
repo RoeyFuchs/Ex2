@@ -7,7 +7,12 @@ using System.Windows.Controls;
 
 namespace Ex2.Views
 {
-    public partial class ControlSide {
-       
+    public partial class ControlSide:UserControl {
+        public ControlSide()
+        {
+            InitializeComponent();
+            this.DataContext = new ViewModels.JoystickViewModel();
+        }
+
     }
 }
