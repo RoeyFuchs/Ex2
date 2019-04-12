@@ -12,11 +12,7 @@ namespace Ex2.Models
 {
     class JoystickModel : BaseNotify,IJoystickModel
     {
-        public JoystickModel()
-        {
-            virtualJoystickEventArgs = new VirtualJoystickEventArgs();
-        }
-        public  VirtualJoystickEventArgs virtualJoystickEventArgs;
+       
         public new event PropertyChangedEventHandler PropertyChanged;
         private double throttle;
         public double Throttle
@@ -25,7 +21,6 @@ namespace Ex2.Models
             set
             {
                 throttle = value;
-                if (virtualJoystickEventArgs != null)
                 {
                     NotifyPropertyChanged("Throttle");
                 }
@@ -38,7 +33,6 @@ namespace Ex2.Models
             set
             {
                 aileron = value;
-                if (virtualJoystickEventArgs != null)
                 {
                     NotifyPropertyChanged("Aileron");
                 }
@@ -51,7 +45,6 @@ namespace Ex2.Models
             set
             {
                 elevator = value;
-                if (virtualJoystickEventArgs != null)
                 {
                     NotifyPropertyChanged("Elevator");
                 }
@@ -64,7 +57,6 @@ namespace Ex2.Models
             set
             {
                 rudder = value;
-                if (virtualJoystickEventArgs != null)
                 {
                     NotifyPropertyChanged("Rudder");
                 }
