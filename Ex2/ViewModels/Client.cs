@@ -4,6 +4,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,26 +20,35 @@ namespace Ex2.ViewModels {
         public Client(SettingsWindowViewModel set) {
             this.set = set;
             this.parse = GetDictionary();
-            Console.WriteLine();
+            this.Start();
         }
 
         void Start() {
-            TcpClient tcpClient = new TcpClient(this.set.FlightServerIP, this.set.FlightCommandPort);
-            while(tcpClient != null) {
-                string r = commands.Take();
-                byte[] bytes = Encoding.ASCII.GetBytes(r);
-                NetworkStream stream = tcpClient.GetStream();
-                stream.Write(bytes, 0, bytes.Length);
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
+            IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
+            socket.Connect(remoteEP);
+            while (socket.Connected) {
+                string r = commands.Take() + "\r\n";
+                socket.Send(System.Text.Encoding.ASCII.GetBytes(r));   
             }
-            tcpClient.Close();
+            socket.Disconnect(false);
+            socket.Close();
         }
 
         void addCommand(string str, bool atom) {
+            if (atom) {
             this.commands.Add(str);
+            } else {
+                this.commands.Add(Parse(str));
+            }
         }
 
         string Parse(string str) {
-            return "lal";
+            string[] words = str.Split(',');
+            string ParsedCmd = this.parse[words[0]];
+            string Val = words[1];
+            return ParsedCmd + " " + Val; ;
         }
 
         Dictionary<string, string> GetDictionary() {

@@ -2,18 +2,18 @@
 <Tags>
   <Key>
     <Name>Throttle</Name>
-    <Value>/controls/engines/current-engine/throttle</Value>
+    <Value>set /controls/engines/current-engine/throttle</Value>
   </Key>
   <Key>
     <Name>Elevator</Name>
-    <Value>/controls/flight/elevator</Value>
+    <Value>set /controls/flight/elevator</Value>
   </Key>
   <Key>
     <Name>Aileron</Name>
-    <Value>/controls/flight/aileron</Value>
+    <Value>set /controls/flight/aileron</Value>
   </Key>
   <Key>
     <Name>Rudder</Name>
-    <Value>/controls/flight/rudder</Value>
+    <Value>set /controls/flight/rudder</Value>
   </Key>
 </Tags>
