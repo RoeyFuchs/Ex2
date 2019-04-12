@@ -12,6 +12,8 @@ namespace Ex2.Models
 {
     class JoystickModel : BaseNotify,IJoystickModel
     {
+        const string comma = ",";
+        const string falseName = "FALSE";
        
         public new event PropertyChangedEventHandler PropertyChanged;
         private double throttle;
@@ -22,7 +24,7 @@ namespace Ex2.Models
             {
                 throttle = value;
                 {
-                    NotifyPropertyChanged("Throttle"+","+ throttle);
+                    NotifyPropertyChanged("Throttle"+comma+ throttle+comma+falseName);
                 }
             }
         }
@@ -34,7 +36,7 @@ namespace Ex2.Models
             {
                 aileron = value;
                 {
-                    NotifyPropertyChanged("Aileron"+","+ aileron);
+                    NotifyPropertyChanged("Aileron"+comma+ aileron+comma+falseName);
                 }
             }
         }
@@ -46,7 +48,7 @@ namespace Ex2.Models
             {
                 elevator = value;
                 {
-                    NotifyPropertyChanged("Elevator"+","+ elevator);
+                    NotifyPropertyChanged("Elevator"+comma+ elevator+comma+falseName);
                 }
             }
         }
@@ -58,7 +60,7 @@ namespace Ex2.Models
             {
                 rudder = value;
                 {
-                    NotifyPropertyChanged("Rudder"+","+rudder);
+                    NotifyPropertyChanged("Rudder"+comma+rudder+falseName+falseName);
                 }
 
             }
