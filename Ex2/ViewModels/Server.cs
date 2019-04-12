@@ -20,6 +20,7 @@ class Server : BaseNotify {
     TcpListener serv;
     public event PropertyChangedEventHandler propertyChange;
     private static Server m_Instance = null;
+    bool running = false;
 
 
     #region Singleton
@@ -37,6 +38,10 @@ class Server : BaseNotify {
         this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
     }
     public void Start() {
+        if(running) {
+            return;
+        } else {
+            running = true; }
         this.serv = new TcpListener(IPAddress.Parse("127.0.0.1"), this.set.FlightInfoPort);
         this.serv.Start();
         //Console.WriteLine("Server has started on 127.0.0.1:{0}.{1}Waiting for a connection...", this.set.FlightInfoPort, Environment.NewLine);
@@ -47,7 +52,11 @@ class Server : BaseNotify {
         while (client.Connected)  //while the client is connected, we look for incoming messages
         {
             byte[] msg = new byte[1024];     //the messages arrive as byte array
-            ns.Read(msg, 0, msg.Length);
+            try {
+                ns.Read(msg, 0, msg.Length);
+            } catch (Exception) {
+                continue;
+            }
             string strMsg = Encoding.Default.GetString(msg);
             strMsg = strMsg.Split('\n')[0].Trim();
 
@@ -62,7 +71,7 @@ class Server : BaseNotify {
         StatusViewModel.Instance.ServerStatus = false;
         client.Close();
 
-
-
     }
+
+  
 }

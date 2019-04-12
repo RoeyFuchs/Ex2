@@ -19,6 +19,7 @@ namespace Ex2.ViewModels {
         static string xmlFile = "xmlFile.xml";
         private static Client m_Instance = null;
         bool ready = false;
+        bool running = false;
         
         #region Singleton
         public static Client Instance {
@@ -38,6 +39,11 @@ namespace Ex2.ViewModels {
         }
 
         public void Start() {
+            if(running) {
+                return;
+            } else {
+                running = true;
+            }
             const int TimeToReconnect = 4000;
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
@@ -52,9 +58,12 @@ namespace Ex2.ViewModels {
                 }
             }
 
-            while (socket.Connected) {
+            while (socket.Connected && SocketConnected(socket)) {
                 string r = commands.Take() + "\r\n";
-                socket.Send(System.Text.Encoding.ASCII.GetBytes(r));   
+                try {
+                    socket.Send(System.Text.Encoding.ASCII.GetBytes(r));
+                } catch (Exception e) { }
+            
             }
             StatusViewModel.Instance.ClientStatus = false;
         
@@ -85,7 +94,17 @@ namespace Ex2.ViewModels {
                 return list;
             }
 
+        bool SocketConnected(Socket s) {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
         }
-          
     }
+
+   
+
+}
 
