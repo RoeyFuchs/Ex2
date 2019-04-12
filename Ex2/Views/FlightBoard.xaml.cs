@@ -50,9 +50,6 @@ namespace Ex2.Views
             string[] args = e.PropertyName.Split(',');
                 Point p1 = new Point(double.Parse(args[0]),double.Parse(args[1]));           
                 planeLocations.AppendAsync(Dispatcher, p1);
-            Console.WriteLine(double.Parse(args[0]));
-            Console.WriteLine(double.Parse(args[1]));
-            Console.WriteLine();
         }
 
     }

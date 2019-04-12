@@ -18,6 +18,7 @@ namespace Ex2.ViewModels {
         Dictionary<string, string> parse;
         static string xmlFile = "xmlFile.xml";
         private static Client m_Instance = null;
+        bool ready = false;
         
         #region Singleton
         public static Client Instance {
@@ -34,14 +35,23 @@ namespace Ex2.ViewModels {
         private Client() {
             this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
             this.parse = GetDictionary();
-            this.Start();
         }
 
         public void Start() {
+            const int TimeToReconnect = 4000;
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
-            socket.Connect(remoteEP);
+
+            while(!ready) {
+                try {
+                    socket.Connect(remoteEP);
+                    this.ready = true;
+                } catch(SocketException e) {
+                    System.Threading.Thread.Sleep(TimeToReconnect);
+                }
+            }
+
             while (socket.Connected) {
                 string r = commands.Take() + "\r\n";
                 socket.Send(System.Text.Encoding.ASCII.GetBytes(r));   

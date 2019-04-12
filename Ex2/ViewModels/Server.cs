@@ -51,6 +51,10 @@ class Server : BaseNotify {
             strMsg = strMsg.Split('\n')[0].Trim();
 
             string[] words = strMsg.Split(',');
+
+            if (words.Length < 2) {
+                continue;
+            }
             //the same networkstream reads the message sent by the client
             propertyChange(this, new PropertyChangedEventArgs(words[0].ToString() + "," + words[1].ToString()));
         }
