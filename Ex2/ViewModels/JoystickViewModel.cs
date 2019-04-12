@@ -13,11 +13,13 @@ namespace Ex2.ViewModels
 {
     class JoystickViewModel : IJoystickViewModel
     {
+        Client client;
         public event PropertyChangedEventHandler PropertyChanged;
         IJoystickModel model;
 
         public JoystickViewModel(IJoystickModel model)
         {
+            client = Client.Instance;
             this.model = model;
             model.PropertyChanged += 
             delegate (Object sender, PropertyChangedEventArgs e) {
@@ -41,7 +43,7 @@ namespace Ex2.ViewModels
        
         public void NotifyPropertyChanged(string propName)
         {
-            Console.WriteLine(propName);
+            client.addCommand(propName, false);
         }
 
 
