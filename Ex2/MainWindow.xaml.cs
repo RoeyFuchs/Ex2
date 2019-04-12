@@ -24,9 +24,7 @@ namespace Ex2 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-             DataContext = new SettingAndServer();
-            Client cl = new Client(new SettingsWindowViewModel(ApplicationSettingsModel.Instance));
-            
+             DataContext = new SettingAndServer();            
         }
 
         private void ControlSide_Loaded(object sender, RoutedEventArgs e) {

@@ -1,4 +1,5 @@
-﻿using Ex2.ViewModels.Windows;
+﻿using Ex2.Model;
+using Ex2.ViewModels.Windows;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -16,14 +17,27 @@ namespace Ex2.ViewModels {
         BlockingCollection<string> commands = new BlockingCollection<string>();
         Dictionary<string, string> parse;
         static string xmlFile = "xmlFile.xml";
+        private static Client m_Instance = null;
+        
+        #region Singleton
+        public static Client Instance {
+            get {
+                if (m_Instance == null) {
+                    m_Instance = new Client();
+                }
+                return m_Instance;
+            }
+        }
 
-        public Client(SettingsWindowViewModel set) {
-            this.set = set;
+        #endregion
+        
+        private Client() {
+            this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
             this.parse = GetDictionary();
             this.Start();
         }
 
-        void Start() {
+        public void Start() {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
@@ -36,7 +50,7 @@ namespace Ex2.ViewModels {
             socket.Close();
         }
 
-        void addCommand(string str, bool atom) {
+        public void addCommand(string str, bool atom) {
             if (atom) {
             this.commands.Add(str);
             } else {
@@ -44,14 +58,14 @@ namespace Ex2.ViewModels {
             }
         }
 
-        string Parse(string str) {
+        private string Parse(string str) {
             string[] words = str.Split(',');
             string ParsedCmd = this.parse[words[0]];
             string Val = words[1];
             return ParsedCmd + " " + Val; ;
         }
 
-        Dictionary<string, string> GetDictionary() {
+        private Dictionary<string, string> GetDictionary() {
                 XElement rootElement = XElement.Parse(File.ReadAllText(@xmlFile));
                 var names = rootElement.Elements("Key").Elements("Name").Select(n => n.Value);
                 var values = rootElement.Elements("Key").Elements("Value").Select(v => v.Value);

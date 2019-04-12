@@ -34,10 +34,16 @@ namespace Ex2.ViewModels.Windows
         }
         public void StartServer() {
             Server serv =  Server.Instance;
+            Client cln = Client.Instance;
         
-            ThreadStart threadDelegate = new ThreadStart(serv.Start);
-            Thread newThread = new Thread(threadDelegate);
-            newThread.Start();
+            ThreadStart threadDelegateServ = new ThreadStart(serv.Start);
+            Thread newThreadServ = new Thread(threadDelegateServ);
+            newThreadServ.Start();
+
+            ThreadStart threadDelegateCln = new ThreadStart(cln.Start);
+            Thread newThreadCln = new Thread(threadDelegateCln);
+            newThreadCln.Start();
+
         }
     }
 }
