@@ -39,9 +39,10 @@ class Server : BaseNotify {
     public void Start() {
         this.serv = new TcpListener(IPAddress.Parse("127.0.0.1"), this.set.FlightInfoPort);
         this.serv.Start();
-        Console.WriteLine("Server has started on 127.0.0.1:{0}.{1}Waiting for a connection...", this.set.FlightInfoPort, Environment.NewLine);
+        //Console.WriteLine("Server has started on 127.0.0.1:{0}.{1}Waiting for a connection...", this.set.FlightInfoPort, Environment.NewLine);
         TcpClient client = this.serv.AcceptTcpClient();
-        Console.WriteLine("A client connected.");
+        StatusViewModel.Instance.ServerStatus = true;
+        //Console.WriteLine("A client connected.");
         NetworkStream ns = client.GetStream();
         while (client.Connected)  //while the client is connected, we look for incoming messages
         {
@@ -58,7 +59,10 @@ class Server : BaseNotify {
             //the same networkstream reads the message sent by the client
             propertyChange(this, new PropertyChangedEventArgs(words[0].ToString() + "," + words[1].ToString()));
         }
+        StatusViewModel.Instance.ServerStatus = false;
+        client.Close();
 
 
-        }
+
     }
+}

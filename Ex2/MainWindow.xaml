@@ -20,15 +20,17 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="8*"/>
+            <RowDefinition Height="7*"/>
 
 
         </Grid.RowDefinitions>
 
         <views:FlightBoard Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></views:FlightBoard>
         <views:ControlSide Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"></views:ControlSide>
-        <Button Grid.Row="0" Grid.Column="0"  Content="connect" Command="{Binding ConnectCommand}" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Right"  />
-        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding OpenSettingCommand}" Margin="20,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+        <views:Status></views:Status>
+        <Button Grid.Row="0" Grid.Column="1"  Content="connect" Command="{Binding ConnectCommand}" Margin="10,22,0,23" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding OpenSettingCommand}"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,22,90,23"  />
+
     </Grid>
 
 </Window>

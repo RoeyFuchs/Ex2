@@ -42,11 +42,11 @@ namespace Ex2.ViewModels {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
-
             while(!ready) {
                 try {
                     socket.Connect(remoteEP);
                     this.ready = true;
+                    StatusViewModel.Instance.ClientStatus = true;
                 } catch(SocketException e) {
                     System.Threading.Thread.Sleep(TimeToReconnect);
                 }
@@ -56,6 +56,8 @@ namespace Ex2.ViewModels {
                 string r = commands.Take() + "\r\n";
                 socket.Send(System.Text.Encoding.ASCII.GetBytes(r));   
             }
+            StatusViewModel.Instance.ClientStatus = false;
+        
             socket.Disconnect(false);
             socket.Close();
         }
