@@ -42,7 +42,7 @@ namespace Ex2.ViewModels {
         }
 
         Dictionary<string, string> GetDictionary() {
-                XElement rootElement = XElement.Parse(File.ReadAllText(xmlFile));
+                XElement rootElement = XElement.Parse(File.ReadAllText(@xmlFile));
                 var names = rootElement.Elements("Key").Elements("Name").Select(n => n.Value);
                 var values = rootElement.Elements("Key").Elements("Value").Select(v => v.Value);
                 var list = names.Zip(values, (k, v) => new { k, v }).ToDictionary(item => item.k, item => item.v);
