@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Ex2.Model;
 using Ex2.Models;
 using Ex2.ViewModels;
 using Ex2.ViewModels.Windows;
@@ -24,6 +25,7 @@ namespace Ex2 {
         public MainWindow() {
             InitializeComponent();
              DataContext = new SettingAndServer();
+            Client cl = new Client(new SettingsWindowViewModel(ApplicationSettingsModel.Instance));
             
         }
 
