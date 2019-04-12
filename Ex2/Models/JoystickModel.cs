@@ -22,7 +22,7 @@ namespace Ex2.Models
             {
                 throttle = value;
                 {
-                    NotifyPropertyChanged("Throttle");
+                    NotifyPropertyChanged("Throttle"+","+ throttle);
                 }
             }
         }
@@ -34,7 +34,7 @@ namespace Ex2.Models
             {
                 aileron = value;
                 {
-                    NotifyPropertyChanged("Aileron");
+                    NotifyPropertyChanged("Aileron"+","+ aileron);
                 }
             }
         }
@@ -46,7 +46,7 @@ namespace Ex2.Models
             {
                 elevator = value;
                 {
-                    NotifyPropertyChanged("Elevator");
+                    NotifyPropertyChanged("Elevator"+","+ elevator);
                 }
             }
         }
@@ -58,7 +58,7 @@ namespace Ex2.Models
             {
                 rudder = value;
                 {
-                    NotifyPropertyChanged("Rudder");
+                    NotifyPropertyChanged("Rudder"+","+rudder);
                 }
 
             }
