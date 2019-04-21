@@ -36,24 +36,16 @@ namespace Ex2.ViewModels.Windows
             Server serv =  Server.Instance;
             Client cln = Client.Instance;
 
-            Task t = new Task(() => {
+            Task serverTask = new Task(() => {
                 serv.Start();
             });
-            t.Start();
+            serverTask.Start();
 
-            Task t2 = new Task(() => {
+            Task clientTask = new Task(() => {
                 cln.Start();
             });
 
-            t2.Start();
-        
-            /*ThreadStart threadDelegateServ = new ThreadStart(serv.Start);
-            Thread newThreadServ = new Thread(threadDelegateServ);
-            newThreadServ.Start();
-
-            ThreadStart threadDelegateCln = new ThreadStart(cln.Start);
-            Thread newThreadCln = new Thread(threadDelegateCln);
-            newThreadCln.Start(); */
+            clientTask.Start();
 
         }
     }
