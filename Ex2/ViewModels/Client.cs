@@ -20,6 +20,10 @@ namespace Ex2.ViewModels {
         private static Client m_Instance = null;
         bool ready = false;
         bool running = false;
+
+        const int refreshMaxTime = 1;
+        const string flush = "\r\n";
+        const char parserSpliter = ',';
         
         #region Singleton
         public static Client Instance {
@@ -58,17 +62,21 @@ namespace Ex2.ViewModels {
                 }
             }
 
+
             while (socket.Connected && SocketConnected(socket)) {
-                string r = commands.Take() + "\r\n";
+                commands.TryTake(out string commnd, TimeSpan.FromSeconds(refreshMaxTime));
+                commnd = commnd + flush;
                 try {
-                    socket.Send(System.Text.Encoding.ASCII.GetBytes(r));
-                } catch (Exception e) { }
+                    socket.Send(System.Text.Encoding.ASCII.GetBytes(commnd));
+                } catch (Exception) { }
             
             }
             StatusViewModel.Instance.ClientStatus = false;
         
             socket.Disconnect(false);
             socket.Close();
+            running = false;
+            ready = false;
         }
 
         public void addCommand(string str, bool atom) {
@@ -80,7 +88,7 @@ namespace Ex2.ViewModels {
         }
 
         private string Parse(string str) {
-            string[] words = str.Split(',');
+            string[] words = str.Split(parserSpliter);
             string ParsedCmd = this.parse[words[0]];
             string Val = words[1];
             return ParsedCmd + " " + Val; ;

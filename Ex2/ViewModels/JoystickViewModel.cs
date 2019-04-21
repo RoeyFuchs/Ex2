@@ -24,6 +24,7 @@ namespace Ex2.ViewModels
             model.PropertyChanged += 
             delegate (Object sender, PropertyChangedEventArgs e) {
             NotifyPropertyChanged(e.PropertyName);
+              
 };
         }
 

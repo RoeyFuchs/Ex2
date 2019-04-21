@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex2.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Ex2.ViewModels {
         private static StatusViewModel m_Instance = null;
         const string green = "#008000";
         const string red = "#FF0000";
+        StatusModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -20,34 +22,36 @@ namespace Ex2.ViewModels {
             get {
                 if (m_Instance == null) {
                     m_Instance = new StatusViewModel();
-                    m_Instance.ServerColor = red;
-                    m_Instance.ClientColor = red;
                 }
                 return m_Instance;
             }
         }
         #endregion
 
-        private StatusViewModel() { }
-
-
+        private StatusViewModel() {
+            model = new StatusModel();
+            model.ServerColor = red;
+            model.ClientColor = red;
+        }
 
         public string ServerColor {
-            set; get;
+            get { return this.model.ServerColor; }
         }
 
         public string ClientColor {
-            set; get;
+            get { return this.model.ClientColor; }
         }
+
+
 
         bool _serverStatus;
         public bool ServerStatus {
             set {
                 _serverStatus = value;
                 if (value) {
-                    ServerColor = green;
+                    model.ServerColor = green;
                 } else {
-                    ServerColor = red;
+                    model.ServerColor = red;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
             }
@@ -57,9 +61,9 @@ namespace Ex2.ViewModels {
             set {
                 _clientStatus = value;
                 if(value) {
-                    ClientColor = green;
+                    model.ClientColor = green;
                 } else {
-                    ClientColor = red;
+                    model.ClientColor = red;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
             }

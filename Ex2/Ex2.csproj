@@ -80,6 +80,7 @@
     <Compile Include="Models\Interface\IJoystickModel.cs" />
     <Compile Include="Models\Interface\ISettingsModel.cs" />
     <Compile Include="Models\JoystickModel.cs" />
+    <Compile Include="Models\StatusModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\Client.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />

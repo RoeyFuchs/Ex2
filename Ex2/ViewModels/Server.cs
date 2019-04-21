@@ -49,11 +49,13 @@ class Server : BaseNotify {
         StatusViewModel.Instance.ServerStatus = true;
         //Console.WriteLine("A client connected.");
         NetworkStream ns = client.GetStream();
+
         while (client.Connected)  //while the client is connected, we look for incoming messages
         {
+            
             byte[] msg = new byte[1024];     //the messages arrive as byte array
             try {
-                ns.Read(msg, 0, msg.Length);
+                if(ns.Read(msg, 0, msg.Length) == 0) { break; }
             } catch (Exception) {
                 continue;
             }
@@ -70,6 +72,8 @@ class Server : BaseNotify {
         }
         StatusViewModel.Instance.ServerStatus = false;
         client.Close();
+        this.serv.Stop();
+        running = false;
 
     }
 
