@@ -23,8 +23,8 @@
         <TextBox TextAlignment="Center" Grid.Row="1" Grid.Column="1" Height="20" Text="{Binding FlightInfoPort}" ></TextBox>
         <Label Content="Flight Command IP:" Grid.Row="2" Grid.Column="0" />
         <TextBox TextAlignment="Center" Grid.Row="2" Grid.Column="1" Height="20" Text="{Binding FlightCommandPort}" ></TextBox>
-        <Button Content="Ok"  Command="{Binding ClickCommand}" Grid.Row="3" Grid.Column="0" Height="20" Width="40" IsDefault="True"></Button>
-        <Button Content="Cancel" Command="{Binding CancelCommand}" Grid.Row="3" Grid.Column="1" Height="20" Width="40" IsCancel="True"></Button>
+        <Button Content="Ok"  Command="{Binding ClickCommand}" Click="Close_Click" Grid.Row="3" Grid.Column="0" Height="20" Width="40" IsDefault="True"></Button>
+        <Button Content="Cancel" Command="{Binding CancelCommand}" Click="Close_Click" Grid.Row="3" Grid.Column="1" Height="20" Width="40" IsCancel="True"></Button>
 
     </Grid>
 </Window>

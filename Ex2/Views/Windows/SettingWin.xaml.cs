@@ -26,5 +26,9 @@ namespace Ex2.Views.Windows
             InitializeComponent();
             DataContext = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
         }
+
+        private void Close_Click(object sender, RoutedEventArgs e) {
+            this.Close();
+        }
     }
 }
