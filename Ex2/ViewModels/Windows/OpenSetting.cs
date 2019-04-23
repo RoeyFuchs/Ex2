@@ -17,7 +17,11 @@ namespace Ex2.ViewModels.Windows
             }
             private ICommand _openSettingCommand;
         private ICommand _connectCommand;
-            public ICommand OpenSettingCommand {
+        private ICommand _disconnectCommand;
+        private Server serv;
+        private Client cln;
+            
+        public ICommand OpenSettingCommand {
                 get {
                     return _openSettingCommand ?? (_openSettingCommand = new CommandHandler(() => MyAction()));
                 }
@@ -32,9 +36,9 @@ namespace Ex2.ViewModels.Windows
                 return _connectCommand ?? (_connectCommand = new CommandHandler(() => StartServer()));
             }
         }
-        public void StartServer() {
-            Server serv =  Server.Instance;
-            Client cln = Client.Instance;
+        private void StartServer() {
+            serv =  Server.Instance;
+            cln = Client.Instance;
 
             Task serverTask = new Task(() => {
                 serv.Start();
@@ -50,5 +54,18 @@ namespace Ex2.ViewModels.Windows
             StatusViewModel.Instance.SetReadyToConnect();
 
         }
+
+        public ICommand DisconnectCommand {
+            get {
+                return _disconnectCommand ?? (_disconnectCommand = new CommandHandler(() => StopServer()));
+            }
+        }
+
+        private void StopServer() {
+            cln.Stop();
+            serv.Stop();
+            
+        }
+
     }
 }
