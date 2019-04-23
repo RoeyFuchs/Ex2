@@ -90,6 +90,9 @@
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\Windows\OpenSetting.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />
+    <Compile Include="Views\AutoPilot.xaml.cs">
+      <DependentUpon>AutoPilot.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ControlSide.xaml.cs">
       <DependentUpon>ControlSide.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,9 @@
     </Compile>
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MenualPilot.xaml.cs">
+      <DependentUpon>MenualPilot.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
@@ -117,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\AutoPilot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ControlSide.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -128,6 +138,10 @@
     <Page Include="Views\Joystick.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MenualPilot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Status.xaml">
       <SubType>Designer</SubType>
