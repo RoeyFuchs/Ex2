@@ -32,6 +32,13 @@ namespace Ex2.ViewModels
             delegate (Object sender, PropertyChangedEventArgs e) {
             NotifyPropertyChanged(e.PropertyName);           
             };
+            joystick.Moved += this.JoystickMoved;
+            Console.WriteLine();
+        }
+
+        public void JoystickMoved(object joy, VirtualJoystickEventArgs info) {
+            model.Elevator = info.Elevator;
+            model.Aileron = info.Aileron;
         }
 
         event PropertyChangedEventHandler IJoystickViewModel.PropertyChanged

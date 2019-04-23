@@ -143,8 +143,8 @@ namespace Ex2.Views {
             double distance = Math.Round(Math.Sqrt(deltaPos.X * deltaPos.X + deltaPos.Y * deltaPos.Y));
             if (distance >= canvasWidth / 2 || distance >= canvasHeight / 2)
                 return;
-            Aileron = TranslateValue(-deltaPos.Y);
-            Elevator = TranslateValue(deltaPos.X);
+            Aileron = TranslateValue(deltaPos.X);
+            Elevator = TranslateValue(-deltaPos.Y);
 
 
 
@@ -152,7 +152,7 @@ namespace Ex2.Views {
             knobPosition.Y = deltaPos.Y;
 
             if (Moved == null ||
-                (!(Math.Abs(_prevAileron - Aileron) > AileronStep) && !(Math.Abs(_prevElevator - Elevator) > ElevatorStep)))
+                (!(Math.Abs(_prevAileron - Aileron) > TranslateValue(AileronStep)) && !(Math.Abs(_prevElevator - Elevator) > TranslateValue(ElevatorStep))))
                 return;
 
             Moved?.Invoke(this, new VirtualJoystickEventArgs { Aileron = Aileron, Elevator = Elevator });

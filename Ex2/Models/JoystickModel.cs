@@ -40,6 +40,34 @@ namespace Ex2.Models
 
             }
         }
+
+        private double aileron;
+        public double Aileron {
+            get { return aileron; }
+            set {
+                aileron = value;
+                {
+                    NotifyPropertyChanged("Aileron" + comma + aileron);
+                }
+
+            }
+        }
+
+        private double elevator;
+        public double Elevator {
+            get { return elevator; }
+            set {
+                elevator = value;
+                {
+                    NotifyPropertyChanged("Elevator" + comma + elevator);
+                }
+
+            }
+        }
+
+
+
+
         public new void NotifyPropertyChanged(string propName){
                 if (this.PropertyChanged != null)
                    this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
