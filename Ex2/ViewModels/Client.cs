@@ -60,7 +60,8 @@ namespace Ex2.ViewModels {
                     socket.Connect(remoteEP);
                     this.ready = true;
                     StatusViewModel.Instance.ClientStatus = true;
-                } catch(SocketException e) {
+                } catch (SocketException)
+                {
                     System.Threading.Thread.Sleep(TimeToReconnect);
                 }
             }

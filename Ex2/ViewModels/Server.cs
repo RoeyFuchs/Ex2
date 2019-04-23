@@ -9,7 +9,6 @@ using System.Threading;
 using System.Net.Sockets;
 using Ex2.ViewModels.Windows;
 using Ex2.Model;
-using System.Threading;
 using System.ComponentModel;
 using Ex2.Models.EventArgs;
 using Ex2.ViewModels;

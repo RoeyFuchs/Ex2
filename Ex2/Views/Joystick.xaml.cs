@@ -13,7 +13,7 @@ namespace Ex2.Views {
     public partial class Joystick : UserControl
     {
 
-        public new event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
         const string comma = ",";
 
         /// <summary>Current Aileron</summary>
@@ -178,7 +178,7 @@ namespace Ex2.Views {
             return x / (canvasWidth/2);
         }
 
-        public new void NotifyPropertyChanged(string propName)
+        public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));

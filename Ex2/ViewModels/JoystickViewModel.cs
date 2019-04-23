@@ -15,7 +15,6 @@ namespace Ex2.ViewModels
     class JoystickViewModel : IJoystickViewModel
     {
         Client client;
-        public event PropertyChangedEventHandler PropertyChanged;
         IJoystickModel model;
         Joystick joystick;
 

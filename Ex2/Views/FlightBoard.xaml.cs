@@ -26,7 +26,7 @@ namespace Ex2.Views
     public partial class FlightBoard : UserControl
     {
         ObservableDataSource<Point> planeLocations = null;
-        Server serv;
+       
 
         public FlightBoard()
         {
