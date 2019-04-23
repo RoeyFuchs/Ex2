@@ -47,6 +47,8 @@ namespace Ex2.ViewModels.Windows
 
             clientTask.Start();
 
+            StatusViewModel.Instance.SetReadyToConnect();
+
         }
     }
 }

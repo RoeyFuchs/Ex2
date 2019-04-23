@@ -10,8 +10,9 @@ using System.Windows.Media;
 namespace Ex2.ViewModels {
     class StatusViewModel : INotifyPropertyChanged {
         private static StatusViewModel m_Instance = null;
-        const string green = "#008000";
-        const string red = "#FF0000";
+        const string _connected = "#008000"; //green
+        const string _disconnected = "#FF0000"; //red
+        const string _readyToConnect = "#FFDE00"; //yellow
         StatusModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -30,8 +31,8 @@ namespace Ex2.ViewModels {
 
         private StatusViewModel() {
             model = new StatusModel();
-            model.ServerColor = red;
-            model.ClientColor = red;
+            model.ServerColor = _disconnected;
+            model.ClientColor = _disconnected;
         }
 
         public string ServerColor {
@@ -42,16 +43,21 @@ namespace Ex2.ViewModels {
             get { return this.model.ClientColor; }
         }
 
-
+        public void SetReadyToConnect() {
+            model.ServerColor = _readyToConnect;
+            model.ClientColor = _readyToConnect;
+            PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
+            PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
+        }
 
         bool _serverStatus;
         public bool ServerStatus {
             set {
                 _serverStatus = value;
                 if (value) {
-                    model.ServerColor = green;
+                    model.ServerColor = _connected;
                 } else {
-                    model.ServerColor = red;
+                    model.ServerColor = _disconnected;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
             }
@@ -61,9 +67,9 @@ namespace Ex2.ViewModels {
             set {
                 _clientStatus = value;
                 if(value) {
-                    model.ClientColor = green;
+                    model.ClientColor = _connected;
                 } else {
-                    model.ClientColor = red;
+                    model.ClientColor = _disconnected;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
             }
