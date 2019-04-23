@@ -1,4 +1,5 @@
 ﻿using Ex2.Models;
+using Ex2.Models.Interface;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace Ex2.ViewModels {
         const string _connected = "#008000"; //green
         const string _disconnected = "#FF0000"; //red
         const string _readyToConnect = "#FFDE00"; //yellow
-        StatusModel model;
+        IStatusModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
