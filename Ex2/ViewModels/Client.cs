@@ -41,7 +41,9 @@ namespace Ex2.ViewModels {
             this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
             this.parse = GetDictionary();
         }
-
+        /// <summary>
+        /// Start - opens connection and send data to our server
+        /// </summary>
         public void Start() {
             if(running) {
                 return;
@@ -52,7 +54,8 @@ namespace Ex2.ViewModels {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
-            while(!ready) {
+            //As long as the client is not logged in - we will attempt to connect
+            while (!ready) {
                 try {
                     socket.Connect(remoteEP);
                     this.ready = true;
@@ -64,6 +67,7 @@ namespace Ex2.ViewModels {
 
 
             while (socket.Connected && SocketConnected(socket)) {
+                //Tries to remove an item from the BlockingCollection
                 commands.TryTake(out string commnd, TimeSpan.FromSeconds(refreshMaxTime));
                 commnd = commnd + flush;
                 try {
@@ -71,6 +75,7 @@ namespace Ex2.ViewModels {
                 } catch (Exception) { }
             
             }
+            //client is not logged in anymore
             StatusViewModel.Instance.ClientStatus = false;
         
             socket.Disconnect(false);
@@ -79,6 +84,11 @@ namespace Ex2.ViewModels {
             ready = false;
         }
 
+        /// <summary>
+        /// addCommand -add new command that will send to our server
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="atom"></param>
         public void addCommand(string str, bool atom) {
             if (atom) {
             this.commands.Add(str);
@@ -86,7 +96,11 @@ namespace Ex2.ViewModels {
                 this.commands.Add(Parse(str));
             }
         }
-
+        /// <summary>
+        /// Parse  -change str format
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         private string Parse(string str) {
             string[] words = str.Split(parserSpliter);
             string ParsedCmd = this.parse[words[0]];
@@ -94,6 +108,10 @@ namespace Ex2.ViewModels {
             return ParsedCmd + " " + Val; ;
         }
 
+        /// <summary>
+        /// GetDictionary - read paths of setting from xml file
+        /// </summary>
+        /// <returns>dictionary of settings and its path</returns>
         private Dictionary<string, string> GetDictionary() {
                 XElement rootElement = XElement.Parse(File.ReadAllText(@xmlFile));
                 var names = rootElement.Elements("Key").Elements("Name").Select(n => n.Value);
@@ -101,9 +119,15 @@ namespace Ex2.ViewModels {
                 var list = names.Zip(values, (k, v) => new { k, v }).ToDictionary(item => item.k, item => item.v);
                 return list;
             }
-
+        /// <summary>
+        /// SocketConnected - check given socket is alredy connected
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns>true if socket is connected or false otherwise</returns>
         bool SocketConnected(Socket s) {
+            //determine the status of the socket
             bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            //check if no data been received from the network.
             bool part2 = (s.Available == 0);
             if (part1 && part2)
                 return false;
