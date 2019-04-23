@@ -28,8 +28,9 @@
         <views:FlightBoard Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"></views:FlightBoard>
         <views:ControlSide Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2"></views:ControlSide>
         <views:Status></views:Status>
-        <Button Grid.Row="0" Grid.Column="1"  Content="connect" Command="{Binding ConnectCommand}" Margin="10,22,0,23" VerticalAlignment="Center" HorizontalAlignment="Left"  />
-        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding OpenSettingCommand}"  VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,22,90,23"  />
+        <Button Grid.Row="0" Grid.Column="1"  Content="Connect" Command="{Binding ConnectCommand}" Margin="10,22,0,23" VerticalAlignment="Center" HorizontalAlignment="Left"  />
+        <Button Grid.Row="0" Grid.Column="1" Content="Setting" Command="{Binding OpenSettingCommand}"  VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Button Grid.Row="0" Grid.Column="1" Content="Disconnect" Command="{Binding DisconnectCommand}" VerticalAlignment="Center" HorizontalAlignment="Right"/>
 
     </Grid>
 

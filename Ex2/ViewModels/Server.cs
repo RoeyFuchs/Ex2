@@ -21,6 +21,7 @@ class Server : BaseNotify {
     public event PropertyChangedEventHandler propertyChange;
     private static Server m_Instance = null;
     bool running = false;
+    bool needStop = false;
 
 
     #region Singleton
@@ -48,7 +49,7 @@ class Server : BaseNotify {
         StatusViewModel.Instance.ServerStatus = true;
         NetworkStream ns = client.GetStream();
 
-        while (client.Connected)  //while the client is connected, we look for incoming messages
+        while (client.Connected && !needStop)  //while the client is connected, we look for incoming messages
         {
             
             byte[] msg = new byte[1024];     //the messages arrive as byte array
@@ -72,8 +73,13 @@ class Server : BaseNotify {
         client.Close();
         this.serv.Stop();
         running = false;
+        needStop = false;
 
     }
 
-  
+    public void Stop() {
+        if (!running) return;
+        needStop = true;
+    }
+    
 }

@@ -20,6 +20,7 @@ namespace Ex2.ViewModels {
         private static Client m_Instance = null;
         bool ready = false;
         bool running = false;
+        bool needStop = false;
 
         const int refreshMaxTime = 1;
         const string flush = "\r\n";
@@ -55,7 +56,7 @@ namespace Ex2.ViewModels {
             IPAddress ipAdd = System.Net.IPAddress.Parse(this.set.FlightServerIP);
             IPEndPoint remoteEP = new IPEndPoint(ipAdd, this.set.FlightCommandPort);
             //As long as the client is not logged in - we will attempt to connect
-            while (!ready) {
+            while (!ready && !needStop) {
                 try {
                     socket.Connect(remoteEP);
                     this.ready = true;
@@ -66,7 +67,7 @@ namespace Ex2.ViewModels {
             }
 
 
-            while (socket.Connected && SocketConnected(socket)) {
+            while (socket.Connected && SocketConnected(socket) && !needStop) {
                 //Tries to remove an item from the BlockingCollection
                 commands.TryTake(out string commnd, TimeSpan.FromSeconds(refreshMaxTime));
                 commnd = commnd + flush;
@@ -77,11 +78,13 @@ namespace Ex2.ViewModels {
             }
             //client is not logged in anymore
             StatusViewModel.Instance.ClientStatus = false;
-        
-            socket.Disconnect(false);
-            socket.Close();
+            if (ready) {
+                socket.Disconnect(false);
+                socket.Close();
+            }
             running = false;
             ready = false;
+            needStop = false;
         }
 
         /// <summary>
@@ -133,6 +136,11 @@ namespace Ex2.ViewModels {
                 return false;
             else
                 return true;
+        }
+
+        public void Stop() {
+            if (!running) return;
+            needStop = true;
         }
     }
 
