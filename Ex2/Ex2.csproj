@@ -82,6 +82,7 @@
     <Compile Include="Models\Interface\IStatusModel.cs" />
     <Compile Include="Models\JoystickModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
+    <Compile Include="ViewModels\AutoPilotViewModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\Client.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />

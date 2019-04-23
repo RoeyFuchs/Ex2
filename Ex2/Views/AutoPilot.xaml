@@ -17,9 +17,9 @@
             <ColumnDefinition Width="216*"/>
             <ColumnDefinition Width="247*" />
         </Grid.ColumnDefinitions>
-        <TextBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Stretch"  />
-        <Button Content="Ok" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
-        <Button Content="Clear" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <TextBox  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  TextWrapping="Wrap" Text="{Binding Path=Text}"  AcceptsReturn="True" VerticalAlignment="Stretch"  />
+        <Button Content="Ok" Command="{Binding SendCommand}" Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Top" Width="75" Grid.Column="2"/>
+        <Button Content="Clear" Command="{Binding ClearCommand}" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </UserControl>
