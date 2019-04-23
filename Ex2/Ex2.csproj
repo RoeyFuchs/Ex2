@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\ApplicationSettingsModel.cs" />
+    <Compile Include="Models\AutoPilotModel.cs" />
     <Compile Include="Models\CommandHandler.cs" />
     <Compile Include="Models\EventArgs\InfoEventArgs.cs" />
     <Compile Include="Models\EventArgs\VirtualJoystickEventArgs.cs" />

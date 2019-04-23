@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Ex2.Views;
 using System.ComponentModel;
 using System.Threading;
+using Ex2.Models;
 
 namespace Ex2.ViewModels
 {
@@ -16,24 +17,43 @@ namespace Ex2.ViewModels
         private ICommand _clearCommand;
         private ICommand _sendCommand;
         private TimeSpan interval = TimeSpan.FromSeconds(2);
+        private AutoPilotModel model;
 
-        const string busyColor = "#ff0000";
-        const string freeColor = "#ff00b7";
+        const string busyColor = "White";
+        const string freeColor = "#F09494";
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public AutoPilotViewModel() {
-            BackColor = freeColor;
+            model = new AutoPilotModel();
         }
            
 
-        public string Text { get; set; }
-
-        private string _backColor;
-        public string BackColor {
-            get { return _backColor; }
+        public string Text {
+            get {
+                return model.Text;
+            }
             set {
-                _backColor = value;
+                model.Text = value;
+                if (value != String.Empty) {
+                    Sent = false;
+                } else {
+                    Sent = true;
+                }
+            }
+        }
+        public string BackColor {
+            get {
+            if(model.Sent) {
+                    return busyColor;
+                } else {
+                    return freeColor;
+                }
+                    }
+        }
+        private bool Sent {
+            set {
+                model.Sent = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BackColor"));
             }
         }
@@ -45,7 +65,7 @@ namespace Ex2.ViewModels
             }
         }
         void ClearTextBox() {
-            this.Text = String.Empty;
+            Text = String.Empty;
             PropertyChanged(this, new PropertyChangedEventArgs("Text"));
         }
 
@@ -65,16 +85,12 @@ namespace Ex2.ViewModels
 
 
         private void Send() {
-            BackColor = busyColor;
-            string[] commands = Text.Split(
-                                new[] { Environment.NewLine },
-                                StringSplitOptions.None
-                                );
+            string[] commands = model.GetCommands();
             foreach (var c in commands) {
                 Client.Instance.addCommand(c, true);
                 Thread.Sleep(interval);
             }
-            BackColor = freeColor;
+            Sent = true;
         }
     }
 }
