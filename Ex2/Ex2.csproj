@@ -79,6 +79,7 @@
     <Compile Include="Models\EventArgs\VirtualJoystickEventArgs.cs" />
     <Compile Include="Models\Interface\IJoystickModel.cs" />
     <Compile Include="Models\Interface\ISettingsModel.cs" />
+    <Compile Include="Models\Interface\IStatusModel.cs" />
     <Compile Include="Models\JoystickModel.cs" />
     <Compile Include="Models\StatusModel.cs" />
     <Compile Include="ViewModels\BaseNotify.cs" />
