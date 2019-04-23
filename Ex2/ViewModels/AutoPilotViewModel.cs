@@ -87,7 +87,7 @@ namespace Ex2.ViewModels
         private void Send() {
             string[] commands = model.GetCommands();
             foreach (var c in commands) {
-                Client.Instance.addCommand(c, true);
+                Client.Instance.AddCommand(c, true);
                 Thread.Sleep(interval);
             }
             Sent = true;

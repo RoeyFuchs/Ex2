@@ -31,9 +31,10 @@ namespace Ex2.ViewModels {
         #endregion
 
         private StatusViewModel() {
-            model = new StatusModel();
-            model.ServerColor = _disconnected;
-            model.ClientColor = _disconnected;
+            model = new StatusModel {
+                ServerColor = _disconnected,
+                ClientColor = _disconnected
+            };
         }
 
         public string ServerColor {

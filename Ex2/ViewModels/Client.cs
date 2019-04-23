@@ -93,7 +93,7 @@ namespace Ex2.ViewModels {
         /// </summary>
         /// <param name="str"></param>
         /// <param name="atom"></param>
-        public void addCommand(string str, bool atom) {
+        public void AddCommand(string str, bool atom) {
             if (atom) {
             this.commands.Add(str);
             } else {

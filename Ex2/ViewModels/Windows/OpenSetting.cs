@@ -13,7 +13,6 @@ namespace Ex2.ViewModels.Windows
 {
         public class SettingAndServer {
             public SettingAndServer() {
-                _canExecute = true;
             }
             private ICommand _openSettingCommand;
         private ICommand _connectCommand;
@@ -26,7 +25,6 @@ namespace Ex2.ViewModels.Windows
                     return _openSettingCommand ?? (_openSettingCommand = new CommandHandler(() => MyAction()));
                 }
             }
-            private bool _canExecute;
             public void MyAction() {
                 Window dig = new SettingWin();
                 dig.Show();

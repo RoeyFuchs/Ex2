@@ -167,7 +167,7 @@ namespace Ex2.Views {
             centerKnob.Begin();
         }
 
-        private void centerKnob_Completed(object sender, EventArgs e)
+        private void CenterKnob_Completed(object sender, EventArgs e)
         {
             Aileron = Elevator = _prevAileron = _prevElevator = 0;
             Released?.Invoke(this);
@@ -180,8 +180,7 @@ namespace Ex2.Views {
 
         public void NotifyPropertyChanged(string propName)
         {
-            if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
     }

@@ -31,7 +31,7 @@ namespace Ex2.Views
         public FlightBoard()
         {
             InitializeComponent();
-            Server.Instance.propertyChange += delegate (Object sender, PropertyChangedEventArgs e) {
+            Server.Instance.PropertyChange += delegate (Object sender, PropertyChangedEventArgs e) {
                 Vm_PropertyChanged(sender, e);
             };
         }

@@ -17,7 +17,7 @@ class Server : BaseNotify {
 
     SettingsWindowViewModel set;
     TcpListener serv;
-    public event PropertyChangedEventHandler propertyChange;
+    public event PropertyChangedEventHandler PropertyChange;
     private static Server m_Instance = null;
     bool running = false;
     bool needStop = false;
@@ -66,7 +66,7 @@ class Server : BaseNotify {
                 continue;
             }
             //the same networkstream reads the message sent by the client
-            propertyChange(this, new PropertyChangedEventArgs(words[0].ToString() + "," + words[1].ToString()));
+            PropertyChange(this, new PropertyChangedEventArgs(words[0].ToString() + "," + words[1].ToString()));
         }
         StatusViewModel.Instance.ServerStatus = false;
         client.Close();

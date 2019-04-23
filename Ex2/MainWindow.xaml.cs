@@ -26,9 +26,6 @@ namespace Ex2 {
             InitializeComponent();
              DataContext = new SettingAndServer();            
         }
-
-        private void ControlSide_Loaded(object sender, RoutedEventArgs e) {
-
-        }
+        
     }
 }

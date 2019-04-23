@@ -56,7 +56,7 @@ namespace Ex2.ViewModels
        
         public void NotifyPropertyChanged(string propName)
         {
-            client.addCommand(propName, false);
+            client.AddCommand(propName, false);
         }
 
 
