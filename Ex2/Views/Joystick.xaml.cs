@@ -1,5 +1,6 @@
 ﻿using Ex2.Model.EventArgs;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -11,6 +12,10 @@ namespace Ex2.Views {
     /// </summary>
     public partial class Joystick : UserControl
     {
+
+        public new event PropertyChangedEventHandler PropertyChanged;
+        const string comma = ",";
+
         /// <summary>Current Aileron</summary>
         public static readonly DependencyProperty AileronProperty =
             DependencyProperty.Register("Aileron", typeof(double), typeof(Joystick),null);
@@ -36,14 +41,18 @@ namespace Ex2.Views {
         public double Aileron
         {
             get { return Convert.ToDouble(GetValue(AileronProperty)); }
-            set { SetValue(AileronProperty, value); }
+            set { SetValue(AileronProperty, value);
+                NotifyPropertyChanged("Aileron" + comma + value);
+            }
         }
 
         /// <summary>current Elevator (or "power"), from 0 to 100</summary>
         public double Elevator
         {
             get { return Convert.ToDouble(GetValue(ElevatorProperty)); }
-            set { SetValue(ElevatorProperty, value); }
+            set { SetValue(ElevatorProperty, value);
+                NotifyPropertyChanged("Elevator" + comma + value);
+            }
         }
 
         /// <summary>How often should be raised StickMove event in degrees</summary>
@@ -167,6 +176,12 @@ namespace Ex2.Views {
         //translate value to -1 to 1
         private double TranslateValue(double x) {
             return x / (canvasWidth/2);
+        }
+
+        public new void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
     }

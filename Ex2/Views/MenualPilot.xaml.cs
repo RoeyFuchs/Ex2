@@ -27,7 +27,7 @@ namespace Ex2.Views
             InitializeComponent();
             var model = new JoystickModel(); ;
             DataContext = model;
-            new JoystickViewModel(model);
+            new JoystickViewModel(model,new Joystick());
         }
     }
 }
