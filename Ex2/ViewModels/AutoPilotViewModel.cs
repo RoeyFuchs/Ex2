@@ -13,84 +13,108 @@ using Ex2.Models;
 
 namespace Ex2.ViewModels
 {
-    public class AutoPilotViewModel : INotifyPropertyChanged {
-        private ICommand _clearCommand;
-        private ICommand _sendCommand;
-        private TimeSpan interval = TimeSpan.FromSeconds(2);
-        private AutoPilotModel model;
+        public class AutoPilotViewModel : INotifyPropertyChanged
+        {
+            private ICommand _clearCommand;
+            private ICommand _sendCommand;
+            private TimeSpan interval = TimeSpan.FromSeconds(2);
+            private AutoPilotModel model;
 
-        const string busyColor = "White";
-        const string freeColor = "#F09494";
+            const string busyColor = "W";
+            const string freeColor = "P";
 
-        public event PropertyChangedEventHandler PropertyChanged;
+            public event PropertyChangedEventHandler PropertyChanged;
 
-        public AutoPilotViewModel() {
-            model = new AutoPilotModel();
-        }
-           
-
-        public string Text {
-            get {
-                return model.Text;
+            public AutoPilotViewModel()
+            {
+                model = new AutoPilotModel();
             }
-            set {
-                model.Text = value;
-                if (value != String.Empty) {
-                    Sent = false;
-                } else {
-                    Sent = true;
+
+
+            public string Text
+            {
+                get
+                {
+                    return model.Text;
                 }
-            }
-        }
-        public string BackColor {
-            get {
-            if(model.Sent) {
-                    return busyColor;
-                } else {
-                    return freeColor;
-                }
+                set
+                {
+                    model.Text = value;
+                    if (value != String.Empty)
+                    {
+                        Sent = false;
                     }
-        }
-        private bool Sent {
-            set {
-                model.Sent = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BackColor"));
+                    else
+                    {
+                        Sent = true;
+                    }
+                }
             }
-        }
-
-
-        public ICommand ClearCommand {
-            get {
-                return _clearCommand ?? (_clearCommand = new CommandHandler(() => ClearTextBox()));
+            public string BackColor
+            {
+                get
+                {
+                    if (model.Sent)
+                    {
+                        return busyColor;
+                    }
+                    else
+                    {
+                        return freeColor;
+                    }
+                }
             }
-        }
-        void ClearTextBox() {
-            Text = String.Empty;
-            PropertyChanged(this, new PropertyChangedEventArgs("Text"));
-        }
-
-
-        public ICommand SendCommand {
-            get {
-                return _sendCommand ?? (_sendCommand = new CommandHandler(() => CreatSendTask()));
+            private bool Sent
+            {
+                set
+                {
+                    model.Sent = value;
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("BackColor"));
+                }
             }
-        }
-
-        private void CreatSendTask() {
-            Task sendTask = new Task(() => {
-                Send();
-            });
-            sendTask.Start();
-        }
 
 
-        private void Send() {
-            string[] commands = model.GetCommands();
-            foreach (var c in commands) {
-                Client.Instance.AddCommand(c, true);
-                Thread.Sleep(interval);
+            public ICommand ClearCommand
+            {
+                get
+                {
+                    return _clearCommand ?? (_clearCommand = new CommandHandler(() => ClearTextBox()));
+                }
             }
-            Sent = true;
-        }
+            void ClearTextBox()
+            {
+                Text = String.Empty;
+                PropertyChanged(this, new PropertyChangedEventArgs("Text"));
+            }
+
+
+            public ICommand SendCommand
+            {
+                get
+                {
+                    return _sendCommand ?? (_sendCommand = new CommandHandler(() => CreatSendTask()));
+                }
+            }
+
+            private void CreatSendTask()
+            {
+                Task sendTask = new Task(() =>
+                {
+                    Send();
+                });
+                sendTask.Start();
+            }
+
+
+            private void Send()
+            {
+                string[] commands = model.GetCommands();
+                foreach (var c in commands)
+                {
+                    Client.Instance.AddCommand(c, true);
+                    Thread.Sleep(interval);
+                }
+                Sent = true;
+            }
     }
 }

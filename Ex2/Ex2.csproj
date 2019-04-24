@@ -99,6 +99,7 @@
     <Compile Include="Views\ControlSide.xaml.cs">
       <DependentUpon>ControlSide.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Convertors\StringToColorConverter.cs" />
     <Compile Include="Views\FlightBoard.xaml.cs">
       <DependentUpon>FlightBoard.xaml</DependentUpon>
     </Compile>

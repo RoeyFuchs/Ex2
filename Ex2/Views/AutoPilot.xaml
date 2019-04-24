@@ -4,8 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Ex2.Views"
+             xmlns:conv="clr-namespace:Ex2.Views.Convertors"
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
+    <UserControl.Resources>
+        <conv:StringToColorConverter x:Key="convertor"/>
+    </UserControl.Resources>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -17,7 +21,7 @@
             <ColumnDefinition Width="216*"/>
             <ColumnDefinition Width="247*" />
         </Grid.ColumnDefinitions>
-        <TextBox  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="4"  TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Background="{Binding Path=BackColor}" >
+        <TextBox  Grid.Row="0"  Grid.Column="0" Grid.ColumnSpan="4"  TextWrapping="Wrap" AcceptsReturn="True" VerticalAlignment="Stretch" Background="{Binding BackColor, Converter={StaticResource convertor}}" >
             <TextBox.Text>
                 <Binding Path="Text"
                    UpdateSourceTrigger="PropertyChanged"/>
