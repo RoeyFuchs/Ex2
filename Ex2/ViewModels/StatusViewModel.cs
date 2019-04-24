@@ -11,9 +11,9 @@ using System.Windows.Media;
 namespace Ex2.ViewModels {
     class StatusViewModel : INotifyPropertyChanged {
         private static StatusViewModel m_Instance = null;
-        const string _connected = "#008000"; //green
-        const string _disconnected = "#FF0000"; //red
-        const string _readyToConnect = "#FFDE00"; //yellow
+        const string _connected = "g"; //green
+        const string _disconnected = "r"; //red
+        const string _readyToConnect = "y"; //yellow
         IStatusModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;

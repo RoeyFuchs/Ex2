@@ -3,9 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:conv="clr-namespace:Ex2.Views.Convertors"
              xmlns:local="clr-namespace:Ex2.Views"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="90">
+    <UserControl.Resources>
+        <conv:StringToStatusColorConvertor x:Key="convertor"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -19,7 +23,7 @@
         <Label Content="Connection Status:" FontSize="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"></Label>
         <Label FontSize="10" Content="Server Connection :" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" ></Label>
         <Label FontSize="10" Content="Client Connection :" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" ></Label>
-        <Rectangle Fill="{Binding ServerColor}" Grid.Column="1" Grid.Row="1"></Rectangle>
-        <Rectangle Fill="{Binding ClientColor}" Grid.Column="1" Grid.Row="2"></Rectangle>
+        <Rectangle Fill="{Binding ServerColor, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="1"></Rectangle>
+        <Rectangle Fill="{Binding ClientColor, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="2"></Rectangle>
     </Grid>
 </UserControl>
