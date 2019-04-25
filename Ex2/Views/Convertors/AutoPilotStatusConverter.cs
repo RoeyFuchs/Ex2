@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace Ex2.Views.Convertors
 {
-    class AutoPilotAtatusToColorConverter : IValueConverter
+    class AutoPilotStatusToColorConverter : IValueConverter
     {
         const string busyColor = "White";
          const string freeColor = "#F09494";
