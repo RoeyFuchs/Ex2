@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex2.Statuses;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,28 +9,28 @@ using System.Windows.Data;
 
 namespace Ex2.Views.Convertors
 {
-    class StringToStatusColorConvertor : IValueConverter
+    class ConnectionStatusToColorConvertor : IValueConverter
     {
         const string _connected = "#008000"; //green
         const string _disconnected = "#FF0000"; //red
         const string _readyToConnect = "#FFDE00"; //yellow
-        const string _green = "g";
-        const string _red = "r";
-        const string _yellow = "y";
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string colorName = (string)value;
-            if (string.Equals(colorName, _green))
+            if (value is ConnectionStatus)
             {
-                return _connected;
-            }
-            else if (string.Equals(colorName, _yellow))
-            {
-                return _readyToConnect;
-            }
-            else if (string.Equals(colorName, _red))
-            {
-                return _disconnected;
+                ConnectionStatus status = (ConnectionStatus)value;
+                if (status==ConnectionStatus.Connected)
+                {
+                    return _connected;
+                }
+                else if (status==ConnectionStatus.ReadyToConnect)
+                {
+                    return _readyToConnect;
+                }
+                else if (status==ConnectionStatus.Disconnected)
+                {
+                    return _disconnected;
+                }
             }
             return null;
         }

@@ -18,11 +18,11 @@ namespace Ex2.Views.Convertors
             if (value is AutoPilotStatus)
             {
                 AutoPilotStatus status = (AutoPilotStatus)value;
-                if (string.Equals(status, AutoPilotStatus.Busy))
+                if (status==AutoPilotStatus.Busy)
                 {
                     return busyColor;
                 }
-                else if (string.Equals(status, AutoPilotStatus.Free))
+                else if (status==AutoPilotStatus.Free)
                 {
                     return freeColor;
                 }

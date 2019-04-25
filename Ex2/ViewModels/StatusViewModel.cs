@@ -1,5 +1,6 @@
 ﻿using Ex2.Models;
 using Ex2.Models.Interface;
+using Ex2.Statuses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,9 +12,6 @@ using System.Windows.Media;
 namespace Ex2.ViewModels {
     class StatusViewModel : INotifyPropertyChanged {
         private static StatusViewModel m_Instance = null;
-        const string _connected = "g"; //green
-        const string _disconnected = "r"; //red
-        const string _readyToConnect = "y"; //yellow
         IStatusModel model;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -32,22 +30,22 @@ namespace Ex2.ViewModels {
 
         private StatusViewModel() {
             model = new StatusModel {
-                ServerColor = _disconnected,
-                ClientColor = _disconnected
+                ServerColor = ConnectionStatus.Disconnected,
+                ClientColor = ConnectionStatus.Disconnected
             };
         }
 
-        public string ServerColor {
+        public ConnectionStatus ServerColor {
             get { return this.model.ServerColor; }
         }
 
-        public string ClientColor {
+        public ConnectionStatus ClientColor {
             get { return this.model.ClientColor; }
         }
 
         public void SetReadyToConnect() {
-            model.ServerColor = _readyToConnect;
-            model.ClientColor = _readyToConnect;
+            model.ServerColor = ConnectionStatus.ReadyToConnect;
+            model.ClientColor = ConnectionStatus.ReadyToConnect;
             PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
             PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
         }
@@ -57,9 +55,9 @@ namespace Ex2.ViewModels {
             set {
                 _serverStatus = value;
                 if (value) {
-                    model.ServerColor = _connected;
+                    model.ServerColor = ConnectionStatus.Connected;
                 } else {
-                    model.ServerColor = _disconnected;
+                    model.ServerColor = ConnectionStatus.Disconnected;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
             }
@@ -69,9 +67,9 @@ namespace Ex2.ViewModels {
             set {
                 _clientStatus = value;
                 if(value) {
-                    model.ClientColor = _connected;
+                    model.ClientColor = ConnectionStatus.Connected;
                 } else {
-                    model.ClientColor = _disconnected;
+                    model.ClientColor = ConnectionStatus.Disconnected;
                 }
                 PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
             }
