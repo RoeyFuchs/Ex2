@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex2.Statuses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,8 +10,8 @@ namespace Ex2.Models.Interface
     interface IStatusModel
     {
 
-         string ServerColor { set; get;}
+        ConnectionStatus ServerColor { set; get;}
 
-         string ClientColor {set; get;}
+        ConnectionStatus ClientColor {set; get;}
     }
 }
