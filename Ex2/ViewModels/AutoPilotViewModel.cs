@@ -10,6 +10,7 @@ using Ex2.Views;
 using System.ComponentModel;
 using System.Threading;
 using Ex2.Models;
+using Ex2.Statuses;
 
 namespace Ex2.ViewModels
 {
@@ -19,9 +20,6 @@ namespace Ex2.ViewModels
             private ICommand _sendCommand;
             private TimeSpan interval = TimeSpan.FromSeconds(2);
             private AutoPilotModel model;
-
-            const string busyColor = "W";
-            const string freeColor = "P";
 
             public event PropertyChangedEventHandler PropertyChanged;
 
@@ -50,18 +48,18 @@ namespace Ex2.ViewModels
                     }
                 }
             }
-            public string BackColor
+            public AutoPilotStatus BackColor
             {
                 get
                 {
                     if (model.Sent)
                     {
-                        return busyColor;
+                    return AutoPilotStatus.Busy;
                     }
                     else
                     {
-                        return freeColor;
-                    }
+                    return AutoPilotStatus.Free;
+                }
                 }
             }
             private bool Sent

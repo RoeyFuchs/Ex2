@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ex2.Statuses;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -8,22 +9,23 @@ using System.Windows.Data;
 
 namespace Ex2.Views.Convertors
 {
-    class StringToColorConverter : IValueConverter
+    class AutoPilotAtatusToColorConverter : IValueConverter
     {
         const string busyColor = "White";
          const string freeColor = "#F09494";
-        const string whiteColor = "W";
-        const string pinkColor = "P";
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            string colorName = (string)value;
-            if (string.Equals(colorName, whiteColor))
+            if (value is AutoPilotStatus)
             {
-                return busyColor;
-            }
-            else if(string.Equals(colorName, pinkColor))
-            {
-                return freeColor;
+                AutoPilotStatus status = (AutoPilotStatus)value;
+                if (string.Equals(status, AutoPilotStatus.Busy))
+                {
+                    return busyColor;
+                }
+                else if (string.Equals(status, AutoPilotStatus.Free))
+                {
+                    return freeColor;
+                }
             }
             return null;
         }
