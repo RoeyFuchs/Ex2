@@ -60,8 +60,10 @@ namespace Ex2.ViewModels.Windows
         }
 
         private void StopServer() {
-            cln.Stop();
-            serv.Stop();
+            if (cln != null && serv != null) {
+                cln.Stop();
+                serv.Stop();
+            }
             
         }
 

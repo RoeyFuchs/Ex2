@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:views="clr-namespace:Ex2.Views"
         xmlns:viewss="Ex2.Views.ControlSide"
-        
+        ResizeMode="NoResize"
         Title="סתיו ורועי משתלטים על העולם" Height="550" Width="1000">
 
     <Grid>
