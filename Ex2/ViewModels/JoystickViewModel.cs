@@ -1,4 +1,5 @@
 ﻿using Ex2.Model.EventArgs;
+using Ex2.Models;
 using Ex2.Models.Interface;
 using Ex2.ViewModels.Interfaces;
 using Ex2.Views;
@@ -18,8 +19,11 @@ namespace Ex2.ViewModels
         IJoystickModel model;
         Joystick joystick;
 
-        public JoystickViewModel(IJoystickModel model, Joystick joystick)
+        const int placesAfterDot = 2;
+
+        public JoystickViewModel(Joystick joystick)
         {
+            IJoystickModel model = new JoystickModel();
             client = Client.Instance;
             this.model = model;
             this.joystick = joystick;
@@ -32,13 +36,28 @@ namespace Ex2.ViewModels
             NotifyPropertyChanged(e.PropertyName);           
             };
             joystick.Moved += this.JoystickMoved;
-            Console.WriteLine();
         }
 
         public void JoystickMoved(object joy, VirtualJoystickEventArgs info) {
             model.Elevator = info.Elevator;
             model.Aileron = info.Aileron;
         }
+
+        public double Throttle {
+            get { return model.Throttle; }
+            set {
+                model.Throttle = Math.Round(value, placesAfterDot);
+            }
+        }
+
+        public double Rudder {
+            get { return model.Rudder; }
+            set {
+                model.Rudder = Math.Round(value, placesAfterDot); ;
+            }
+        }
+
+
 
         event PropertyChangedEventHandler IJoystickViewModel.PropertyChanged
         {
@@ -58,8 +77,6 @@ namespace Ex2.ViewModels
         {
             client.AddCommand(propName, false);
         }
-
-
-
+        
     }
 }

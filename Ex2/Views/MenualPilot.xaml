@@ -22,7 +22,7 @@
 
             <views:Joystick x:Name="Joystick" Grid.Column="1" Grid.Row="1" ></views:Joystick>
             <Slider Name="rudderSlider" Value="{Binding Rudder}" Grid.Column="1" Grid.Row="2" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
-            <Slider Name="throttleSlider" Value="{Binding Throttle}" Grid.Column="0" Minimum="0" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-56,144,287,152" >
+        <Slider Name="throttleSlider" Value="{Binding Throttle}" Grid.Column="0" Minimum="0" Maximum="1" TickFrequency="0.01"  TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-56,144,287,152" >
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
@@ -42,9 +42,9 @@
                     </TransformGroup>
                 </Label.RenderTransform>
             </Label>
-            <Label Content="{Binding ElementName=throttleSlider, Path=Value}" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+        <Label Content="{Binding Path=Throttle}" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Bottom" />
             <Label Content="rudder" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Grid.Row="2" />
-            <Label Content="{Binding ElementName=rudderSlider, Path=Value}"  HorizontalAlignment="Left"   VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"/>
+            <Label Content="{Binding Path=Rudder}"  HorizontalAlignment="Left"   VerticalAlignment="Top" Grid.Row="2" Grid.Column="2"/>
             <Label Content="aileron" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center"/>
             <Label Content="{Binding ElementName=Joystick, Path=Aileron}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="0" Grid.Column="2"/>
 
