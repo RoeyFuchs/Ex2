@@ -8,7 +8,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="500" d:DesignWidth="500">
     <UserControl.Resources>
-        <conv:AutoPilotAtatusToColorConverter x:Key="convertor"/>
+        <conv:AutoPilotStatusToColorConverter x:Key="convertor"/>
     </UserControl.Resources>
     <Grid ShowGridLines="False">
         <Grid.RowDefinitions>
