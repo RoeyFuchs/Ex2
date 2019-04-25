@@ -21,9 +21,8 @@ namespace Ex2.ViewModels
 
         const int placesAfterDot = 2;
 
-        public JoystickViewModel(Joystick joystick)
+        public JoystickViewModel(IJoystickModel model,Joystick joystick)
         {
-            IJoystickModel model = new JoystickModel();
             client = Client.Instance;
             this.model = model;
             this.joystick = joystick;
