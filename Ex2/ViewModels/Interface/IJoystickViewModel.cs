@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace Ex2.ViewModels.Interfaces
 {
-    public interface IJoystickViewModel
-    {
-        event PropertyChangedEventHandler PropertyChanged;
+    interface IJoystickViewModel {
+        void NotifyPropertyChanged(string propName);
     }
+
+
 }
