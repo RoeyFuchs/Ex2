@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Ex2.Models {
     class StatusModel : IStatusModel{
-        public ConnectionStatus ServerColor {
+        public ConnectionStatus ServerConnectionStatus {
             set; get;
         }
 
-        public ConnectionStatus ClientColor {
+        public ConnectionStatus ClientConnectionStatus {
             set; get;
         }
     }

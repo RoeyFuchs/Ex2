@@ -30,24 +30,24 @@ namespace Ex2.ViewModels {
 
         private StatusViewModel() {
             model = new StatusModel {
-                ServerColor = ConnectionStatus.Disconnected,
-                ClientColor = ConnectionStatus.Disconnected
+                ServerConnectionStatus = ConnectionStatus.Disconnected,
+                ClientConnectionStatus = ConnectionStatus.Disconnected
             };
         }
 
-        public ConnectionStatus ServerColor {
-            get { return this.model.ServerColor; }
+        public ConnectionStatus ServerConnectionStatus {
+            get { return this.model.ServerConnectionStatus; }
         }
 
-        public ConnectionStatus ClientColor {
-            get { return this.model.ClientColor; }
+        public ConnectionStatus ClientConnectionStatus {
+            get { return this.model.ClientConnectionStatus; }
         }
 
         public void SetReadyToConnect() {
-            model.ServerColor = ConnectionStatus.ReadyToConnect;
-            model.ClientColor = ConnectionStatus.ReadyToConnect;
-            PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
-            PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
+            model.ServerConnectionStatus = ConnectionStatus.ReadyToConnect;
+            model.ClientConnectionStatus = ConnectionStatus.ReadyToConnect;
+            PropertyChanged(this, new PropertyChangedEventArgs("ServerConnectionStatus"));
+            PropertyChanged(this, new PropertyChangedEventArgs("ClientConnectionStatus"));
         }
 
         bool _serverStatus;
@@ -55,23 +55,23 @@ namespace Ex2.ViewModels {
             set {
                 _serverStatus = value;
                 if (value) {
-                    model.ServerColor = ConnectionStatus.Connected;
+                    model.ServerConnectionStatus = ConnectionStatus.Connected;
                 } else {
-                    model.ServerColor = ConnectionStatus.Disconnected;
+                    model.ServerConnectionStatus = ConnectionStatus.Disconnected;
                 }
-                PropertyChanged(this, new PropertyChangedEventArgs("ServerColor"));
+                PropertyChanged(this, new PropertyChangedEventArgs("ServerConnectionStatus"));
             }
         }
         bool _clientStatus;
         public bool ClientStatus {
             set {
                 _clientStatus = value;
-                if(value) {
-                    model.ClientColor = ConnectionStatus.Connected;
+                if (value) {
+                    model.ClientConnectionStatus = ConnectionStatus.Connected;
                 } else {
-                    model.ClientColor = ConnectionStatus.Disconnected;
+                    model.ClientConnectionStatus = ConnectionStatus.Disconnected;
                 }
-                PropertyChanged(this, new PropertyChangedEventArgs("ClientColor"));
+                PropertyChanged(this, new PropertyChangedEventArgs("ClientConnectionStatus"));
             }
         }
 

@@ -22,7 +22,7 @@
         <Label Content="Connection Status:" FontSize="10" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center"></Label>
         <Label FontSize="10" Content="Server Connection :" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" ></Label>
         <Label FontSize="10" Content="Client Connection :" Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" VerticalContentAlignment="Center" ></Label>
-        <Rectangle Fill="{Binding ServerColor, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="1"></Rectangle>
-        <Rectangle Fill="{Binding ClientColor, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="2"></Rectangle>
+        <Rectangle Fill="{Binding ServerConnectionStatus, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="1"></Rectangle>
+        <Rectangle Fill="{Binding ClientConnectionStatus, Converter={StaticResource convertor}}" Grid.Column="1" Grid.Row="2"></Rectangle>
     </Grid>
 </UserControl>
