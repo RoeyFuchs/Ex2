@@ -24,7 +24,7 @@ namespace Ex2 {
     public partial class MainWindow : Window {
         public MainWindow() {
             InitializeComponent();
-             DataContext = new SettingAndServer();            
+             DataContext = new Connections();            
         }
         
     }
