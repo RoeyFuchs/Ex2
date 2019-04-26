@@ -20,9 +20,9 @@
             </Grid.ColumnDefinitions>
 
 
-        <views:Joystick x:Name="Joystick" Grid.Column="1" Grid.Row="1" ></views:Joystick>
-        <Slider Name="rudderSlider" Value="{Binding Rudder}" Grid.Column="1" Grid.Row="2" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
-        <Slider Name="throttleSlider" Value="{Binding Throttle}" Grid.Column="0" Minimum="0" Maximum="1" TickFrequency="0.01"  TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-56,144,287,152" >
+            <views:Joystick x:Name="Joystick" Grid.Column="1" Grid.Row="1" ></views:Joystick>
+            <Slider Name="rudderSlider" Value="{Binding Rudder}" Grid.Column="1" Grid.Row="2" Minimum="-1" Maximum="1" TickFrequency="0.1" TickPlacement="BottomRight" />
+        <Slider Name="throttleSlider" Value="{Binding Throttle}" Grid.Column="0" Minimum="0" Maximum="1" TickFrequency="0.01"  TickPlacement="BottomRight" RenderTransformOrigin="0.5,0.5"  HorizontalAlignment="Right" Width="186"  Grid.Row="1" Grid.ColumnSpan="2" Margin="-65,144,287,152" >
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>
