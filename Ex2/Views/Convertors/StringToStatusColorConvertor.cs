@@ -14,6 +14,7 @@ namespace Ex2.Views.Convertors
         const string _connected = "#008000"; //green
         const string _disconnected = "#FF0000"; //red
         const string _readyToConnect = "#FFDE00"; //yellow
+        //convert status to color 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is ConnectionStatus)
