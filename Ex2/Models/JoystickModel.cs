@@ -69,7 +69,7 @@ namespace Ex2.Models
 
 
         public new void NotifyPropertyChanged(string propName){
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
 
