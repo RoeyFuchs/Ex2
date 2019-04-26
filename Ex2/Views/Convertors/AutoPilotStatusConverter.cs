@@ -13,6 +13,7 @@ namespace Ex2.Views.Convertors
     {
         const string busyColor = "White";
          const string freeColor = "#F09494";
+        //convert status to color
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value is AutoPilotStatus)
