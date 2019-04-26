@@ -131,9 +131,6 @@ namespace Ex2.Views {
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
-            ///!!!!!!!!!!!!!!!!!
-            /// YOU MUST CHANGE THE FUNCTION!!!! - add translate value function?
-            ///!!!!!!!!!!!!!!
             if (!Knob.IsMouseCaptured) return;
 
             Point newPos = e.GetPosition(Base);
@@ -145,8 +142,6 @@ namespace Ex2.Views {
                 return;
             Aileron = TranslateValue(deltaPos.X);
             Elevator = TranslateValue(-deltaPos.Y);
-
-
 
             knobPosition.X = deltaPos.X;
             knobPosition.Y = deltaPos.Y;
@@ -175,7 +170,7 @@ namespace Ex2.Views {
 
         //translate value to -1 to 1
         private double TranslateValue(double x) {
-            return x / (canvasWidth/2);
+            return x / (canvasWidth/2); //change the input relative to the width (half of)
         }
 
         public void NotifyPropertyChanged(string propName)
