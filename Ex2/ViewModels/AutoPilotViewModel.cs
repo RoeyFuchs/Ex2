@@ -90,11 +90,13 @@ namespace Ex2.ViewModels
             {
                 get
                 {
-                    return _sendCommand ?? (_sendCommand = new CommandHandler(() => CreatSendTask()));
+                    return _sendCommand ?? (_sendCommand = new CommandHandler(() => CreateSendTask()));
                 }
             }
-
-            private void CreatSendTask()
+        /// <summary>
+        /// CreateSendTask - create new task for send function execution
+        /// </summary>
+        private void CreateSendTask()
             {
                 Task sendTask = new Task(() =>
                 {
@@ -103,10 +105,13 @@ namespace Ex2.ViewModels
                 sendTask.Start();
             }
 
-
-            private void Send()
+        /// <summary>
+        /// Send - Add new commands to send to the server
+        /// </summary>
+        private void Send()
             {
                 string[] commands = model.GetCommands();
+            //send all commands - one by one
                 foreach (var c in commands)
                 {
                     Client.Instance.AddCommand(c, true);
