@@ -11,7 +11,7 @@ using Ex2.Views.Windows;
 
 namespace Ex2.ViewModels.Windows
 {
-        public class SettingAndServer {
+        public class Connections {
         private ICommand _openSettingCommand;
         private ICommand _connectCommand;
         private ICommand _disconnectCommand;
