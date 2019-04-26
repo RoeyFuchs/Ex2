@@ -8,8 +8,8 @@
              d:DesignHeight="500" d:DesignWidth="500"  >
     <DockPanel Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="2">
         <TabControl DockPanel.Dock="Top" Margin="0" Height="500">
-            <TabItem  Header="Menual">
-                <views:MenualPilot></views:MenualPilot>
+            <TabItem  Header="Manual">
+                <views:ManualPilot></views:ManualPilot>
             </TabItem>
             <TabItem  Header="Auto Pilot">
                 <views:AutoPilot></views:AutoPilot>

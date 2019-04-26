@@ -3,7 +3,7 @@ using Ex2.ViewModels;
 using System.ComponentModel;
 
 namespace Ex2.Models {
-    class MenualPilotModel : BaseNotify, IMenualPilotModel {
+    class ManualPilotModel : BaseNotify, IManualPilotModel {
         const string csvSplitter = ",";
 
         public new event PropertyChangedEventHandler PropertyChanged;

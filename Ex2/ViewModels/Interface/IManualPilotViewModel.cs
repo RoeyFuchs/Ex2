@@ -1,5 +1,5 @@
 ﻿namespace Ex2.ViewModels.Interfaces {
-    interface IMenualPilotViewModel {
+    interface IManualPilotViewModel {
         void NotifyPropertyChanged(string propName);
     }
 

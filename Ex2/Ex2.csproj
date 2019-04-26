@@ -51,7 +51,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DynamicDataDisplay">
-      <HintPath>..\..\..\..\Desktop\DynamicDataDisplay.dll</HintPath>
+      <HintPath>bin\Debug\DynamicDataDisplay.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,7 +78,7 @@
     <Compile Include="Models\CommandHandler.cs" />
     <Compile Include="Models\EventArgs\InfoEventArgs.cs" />
     <Compile Include="Models\EventArgs\VirtualJoystickEventArgs.cs" />
-    <Compile Include="Models\Interface\IMenualPilotModel.cs" />
+    <Compile Include="Models\Interface\IManuallPilotModel.cs" />
     <Compile Include="Models\Interface\ISettingsModel.cs" />
     <Compile Include="Models\Interface\IStatusModel.cs" />
     <Compile Include="Models\MenualPilotModel.cs" />
@@ -88,8 +88,8 @@
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\Client.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
-    <Compile Include="ViewModels\Interface\IMenualPilotViewModel.cs" />
-    <Compile Include="ViewModels\MenualPilotViewModel.cs" />
+    <Compile Include="ViewModels\Interface\IManualPilotViewModel.cs" />
+    <Compile Include="ViewModels\ManualPilotViewModel.cs" />
     <Compile Include="ViewModels\Server.cs" />
     <Compile Include="ViewModels\StatusViewModel.cs" />
     <Compile Include="ViewModels\Windows\OpenSetting.cs" />
@@ -108,8 +108,8 @@
     <Compile Include="Views\Joystick.xaml.cs">
       <DependentUpon>Joystick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MenualPilot.xaml.cs">
-      <DependentUpon>MenualPilot.xaml</DependentUpon>
+    <Compile Include="Views\ManualPilot.xaml.cs">
+      <DependentUpon>ManualPilot.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Status.xaml.cs">
       <DependentUpon>Status.xaml</DependentUpon>
@@ -145,7 +145,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\MenualPilot.xaml">
+    <Page Include="Views\ManualPilot.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

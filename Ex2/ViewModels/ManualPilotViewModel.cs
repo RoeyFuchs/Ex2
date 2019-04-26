@@ -7,14 +7,14 @@ using System.ComponentModel;
 
 
 namespace Ex2.ViewModels {
-    class MenualPilotViewModel : IMenualPilotViewModel {
+    class ManualPilotViewModel : IManualPilotViewModel {
         Client client;
-        IMenualPilotModel model;
+        IManualPilotModel model;
         Joystick joystick;
 
         const int placesAfterDot = 3; //how many placse after dot to round
 
-        public MenualPilotViewModel(IMenualPilotModel model, Joystick joystick) {
+        public ManualPilotViewModel(IManualPilotModel model, Joystick joystick) {
             client = Client.Instance;
             this.model = model;
             this.joystick = joystick;

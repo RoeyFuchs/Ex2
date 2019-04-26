@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace Ex2.Models.Interface {
-    interface IMenualPilotModel {
+    interface IManualPilotModel {
         double Throttle { get; set; }
         double Rudder { get; set; }
         double Elevator { get; set; }
