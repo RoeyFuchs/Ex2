@@ -5,8 +5,7 @@ using System.ComponentModel;
 namespace Ex2.Models {
     class ManualPilotModel : BaseNotify, IManualPilotModel {
         const string csvSplitter = ",";
-
-        public new event PropertyChangedEventHandler PropertyChanged;
+    
         private double throttle = 0.5; //starting point
         public double Throttle {
             get { return throttle; }
@@ -52,10 +51,5 @@ namespace Ex2.Models {
 
             }
         }
-
-        public new void NotifyPropertyChanged(string propName) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-        }
-
     }
 }
