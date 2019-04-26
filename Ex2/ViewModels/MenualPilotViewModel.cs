@@ -6,16 +6,15 @@ using System;
 using System.ComponentModel;
 
 
-
 namespace Ex2.ViewModels {
-    class JoystickViewModel : IJoystickViewModel {
+    class MenualPilotViewModel : IMenualPilotViewModel {
         Client client;
-        IJoystickModel model;
+        IMenualPilotModel model;
         Joystick joystick;
 
-        const int placesAfterDot = 2;
+        const int placesAfterDot = 3; //how many placse after dot to round
 
-        public JoystickViewModel(IJoystickModel model, Joystick joystick) {
+        public MenualPilotViewModel(IMenualPilotModel model, Joystick joystick) {
             client = Client.Instance;
             this.model = model;
             this.joystick = joystick;
@@ -24,10 +23,10 @@ namespace Ex2.ViewModels {
                    delegate (Object sender, PropertyChangedEventArgs e) {
                        NotifyPropertyChanged(e.PropertyName);
                    };
-           model.PropertyChanged +=
-            delegate (Object sender, PropertyChangedEventArgs e) {
-                NotifyPropertyChanged(e.PropertyName);
-            };  
+            model.PropertyChanged +=
+             delegate (Object sender, PropertyChangedEventArgs e) {
+                 NotifyPropertyChanged(e.PropertyName);
+             };
             joystick.Moved += this.JoystickMoved;
         }
 

@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ex2.Statuses
-{
+﻿namespace Ex2.Statuses {
     public enum AutoPilotStatus { Busy, Free }
-    public enum ConnectionStatus { Connected, Disconnected,ReadyToConnect}
+    public enum ConnectionStatus { Connected, Disconnected, ReadyToConnect }
 
 }

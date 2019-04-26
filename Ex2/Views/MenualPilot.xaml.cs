@@ -25,7 +25,7 @@ namespace Ex2.Views
         public MenualPilot()
         {
             InitializeComponent();
-            DataContext = new JoystickViewModel(new JoystickModel(), Joystick);
+            DataContext = new MenualPilotViewModel(new MenualPilotModel(), Joystick);
         }
     }
 }

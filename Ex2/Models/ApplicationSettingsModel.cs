@@ -1,22 +1,12 @@
 ﻿using Ex2.Model.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ex2.Model
-{
-    public class ApplicationSettingsModel : ISettingsModel
-    {
+namespace Ex2.Model {
+    public class ApplicationSettingsModel : ISettingsModel {
         #region Singleton
         private static ISettingsModel m_Instance = null;
-        public static ISettingsModel Instance
-        {
-            get
-            {
-                if(m_Instance == null)
-                {
+        public static ISettingsModel Instance {
+            get {
+                if (m_Instance == null) {
                     m_Instance = new ApplicationSettingsModel();
                 }
                 return m_Instance;
@@ -24,30 +14,25 @@ namespace Ex2.Model
         }
 
         #endregion
-        public string FlightServerIP
-        {
+        public string FlightServerIP {
             get { return Properties.Settings.Default.FlightServerIP; }
             set { Properties.Settings.Default.FlightServerIP = value; }
         }
-        public int FlightCommandPort
-        {
+        public int FlightCommandPort {
             get { return int.Parse(Properties.Settings.Default.FlightCommandPort); }
             set { Properties.Settings.Default.FlightCommandPort = value.ToString(); }
         }
 
-        public int FlightInfoPort
-        {
+        public int FlightInfoPort {
             get { return int.Parse(Properties.Settings.Default.FlightInfoPort); }
             set { Properties.Settings.Default.FlightInfoPort = value.ToString(); }
         }
 
-        public void SaveSettings()
-        {
+        public void SaveSettings() {
             Properties.Settings.Default.Save();
         }
 
-        public void ReloadSettings()
-        {
+        public void ReloadSettings() {
             Properties.Settings.Default.Reload();
         }
     }

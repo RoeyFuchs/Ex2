@@ -7,8 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace Ex2.ViewModels {
@@ -25,7 +23,7 @@ namespace Ex2.ViewModels {
         const int refreshMaxTime = 1;
         const string flush = "\r\n";
         const char parserSpliter = ',';
-        
+
         #region Singleton
         public static Client Instance {
             get {
@@ -37,7 +35,7 @@ namespace Ex2.ViewModels {
         }
 
         #endregion
-        
+
         private Client() {
             this.set = new SettingsWindowViewModel(ApplicationSettingsModel.Instance);
             this.parse = GetDictionary();
@@ -46,7 +44,7 @@ namespace Ex2.ViewModels {
         /// Start - opens connection and send data to our server
         /// </summary>
         public void Start() {
-            if(running) {
+            if (running) {
                 return;
             } else {
                 running = true;
@@ -61,8 +59,7 @@ namespace Ex2.ViewModels {
                     socket.Connect(remoteEP);
                     this.ready = true;
                     StatusViewModel.Instance.ClientStatus = true;
-                } catch (SocketException)
-                {
+                } catch (SocketException) {
                     System.Threading.Thread.Sleep(TimeToReconnect);
                 }
             }
@@ -75,7 +72,7 @@ namespace Ex2.ViewModels {
                 try {
                     socket.Send(System.Text.Encoding.ASCII.GetBytes(commnd));
                 } catch (Exception) { }
-            
+
             }
             //client is not logged in anymore
             StatusViewModel.Instance.ClientStatus = false;
@@ -95,7 +92,7 @@ namespace Ex2.ViewModels {
         /// <param name="atom"></param>
         public void AddCommand(string str, bool atom) {
             if (atom) {
-            this.commands.Add(str);
+                this.commands.Add(str);
             } else {
                 this.commands.Add(Parse(str));
             }
@@ -117,12 +114,12 @@ namespace Ex2.ViewModels {
         /// </summary>
         /// <returns>dictionary of settings and its path</returns>
         private Dictionary<string, string> GetDictionary() {
-                XElement rootElement = XElement.Parse(File.ReadAllText(@xmlFile));
-                var names = rootElement.Elements("Key").Elements("Name").Select(n => n.Value);
-                var values = rootElement.Elements("Key").Elements("Value").Select(v => v.Value);
-                var list = names.Zip(values, (k, v) => new { k, v }).ToDictionary(item => item.k, item => item.v);
-                return list;
-            }
+            XElement rootElement = XElement.Parse(File.ReadAllText(@xmlFile));
+            var names = rootElement.Elements("Key").Elements("Name").Select(n => n.Value);
+            var values = rootElement.Elements("Key").Elements("Value").Select(v => v.Value);
+            var list = names.Zip(values, (k, v) => new { k, v }).ToDictionary(item => item.k, item => item.v);
+            return list;
+        }
         /// <summary>
         /// SocketConnected - check given socket is alredy connected
         /// </summary>
@@ -145,7 +142,7 @@ namespace Ex2.ViewModels {
         }
     }
 
-   
+
 
 }
 

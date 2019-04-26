@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Ex2.Model;
 using Ex2.Views.Windows;
 
-namespace Ex2.ViewModels.Windows
-{
-        public class Connections {
+namespace Ex2.ViewModels.Windows {
+    public class Connections {
         private ICommand _openSettingCommand;
         private ICommand _connectCommand;
         private ICommand _disconnectCommand;
@@ -21,17 +15,17 @@ namespace Ex2.ViewModels.Windows
         /// OpenSettingCommand
         /// </summary>
         public ICommand OpenSettingCommand {
-                get {
-                    return _openSettingCommand ?? (_openSettingCommand = new CommandHandler(() => OpenSettingsWin()));
-                }
+            get {
+                return _openSettingCommand ?? (_openSettingCommand = new CommandHandler(() => OpenSettingsWin()));
             }
+        }
         /// <summary>
         /// OpenSettingsWin
         /// </summary>
         public void OpenSettingsWin() {
-                Window dig = new SettingWin();
-                dig.Show();
-            }
+            Window dig = new SettingWin();
+            dig.Show();
+        }
         /// <summary>
         /// ConnectCommand - connect to server
         /// </summary>
@@ -44,7 +38,7 @@ namespace Ex2.ViewModels.Windows
         /// StartServer
         /// </summary>
         private void StartServerAndClient() {
-            serv =  Server.Instance;
+            serv = Server.Instance;
             cln = Client.Instance;
             //start server on new task
             Task serverTask = new Task(() => {
@@ -77,7 +71,7 @@ namespace Ex2.ViewModels.Windows
                 cln.Stop();
                 serv.Stop();
             }
-            
+
         }
 
     }
